@@ -23,7 +23,7 @@ const About = () => (
         <p>
             I'm deeply motivated by a love for continuous learning, emerging technologies like Generative AI, and open-source contribution. My goal is to create impactful, user-centric software that bridges innovation and practicality.
         </p>
-        <a href="/Palakolanu-Dhanunjay-Reddy_Resume.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
+        <a href="/Palakolanu-Dhanunjay-Reddy-Entry-Level-Web-Developer.pdf" target="_blank" rel="noopener noreferrer">Download Resume</a>
       </div>
     </section>
   </ParallaxTilt>

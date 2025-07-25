@@ -43,7 +43,7 @@ const Hero = () => (
 Engineer by training,innovator by mindset.Building intelligent systems for real users.
         </p>
         <a
-            href="/Palakolanu-Dhanunjay-Reddy_Resume.pdf"
+            href="/Palakolanu-Dhanunjay-Reddy-Entry-Level-Web-Developer.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center mt-10 px-8 py-4 bg-blue-600 text-white font-bold rounded-full text-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
