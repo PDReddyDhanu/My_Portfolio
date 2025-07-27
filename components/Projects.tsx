@@ -44,8 +44,8 @@ const Projects = () => (
           <h3 className="text-xl font-bold text-white mb-2">Portfolio Website</h3>
           <p className="text-slate-300 mb-4">A personal portfolio to showcase my projects, skills, and achievements, built with React and Tailwind CSS.</p>
           <div className="flex gap-3 mt-auto">
-            <a href="https://github.com/PDReddyDhanu/Dhanunjay-My-Portfolio" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">GitHub</a>
-            <a href="https://github.com/PDReddyDhanu/Dhanunjay-My-Portfolio" target="_blank" rel="noopener noreferrer" className="bg-blue-800 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-900 transition">Live Demo</a>
+            <a href="https://github.com/PDReddyDhanu/My_Portfolio" target="_blank" rel="noopener noreferrer" className="bg-blue-600 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-700 transition">GitHub</a>
+            <a href="https://dhanunportfolio.netlify.app/" target="_blank" rel="noopener noreferrer" className="bg-blue-800 text-white px-4 py-2 rounded-full font-semibold hover:bg-blue-900 transition">Live Demo</a>
           </div>
         </div>
       </ParallaxTilt>
