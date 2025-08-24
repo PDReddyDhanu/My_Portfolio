@@ -1,5 +1,5 @@
 
-import React from 'react';
+
 import { motion } from 'framer-motion';
 
 const DownloadIcon = () => (
@@ -9,50 +9,123 @@ const DownloadIcon = () => (
 );
 
 const Hero = () => (
-  <motion.section
-    className="text-center py-12 md:py-20 bg-[#181f36] rounded-3xl shadow-2xl shadow-blue-900 relative overflow-hidden"
-    initial={{ y: 30, opacity: 0 }}
-    animate={{ y: 0, opacity: 1 }}
-    transition={{ type: 'spring', stiffness: 60, damping: 12 }}
-    style={{ boxShadow: '0 8px 32px 0 rgba(58, 97, 255, 0.25)' }}
-  >
-    <div className="max-w-3xl mx-auto px-6 flex flex-col items-center">
+  <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
+    {/* Background Elements */}
+    <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF6B35]/10 rounded-full blur-3xl animate-pulse"></div>
+      <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#039BE5]/10 rounded-full blur-3xl animate-pulse delay-1000"></div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#FFCA28]/5 rounded-full blur-3xl animate-pulse delay-500"></div>
+    </div>
+
+    <div className="container mx-auto max-w-6xl relative z-10">
       <motion.div
-        className="relative mb-6"
-        animate={{ y: [0, -10, 0] }}
-        transition={{ repeat: Infinity, duration: 3, ease: 'easeInOut' }}
+        className="text-center"
+        initial={{ y: 30, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 60, damping: 12 }}
       >
-        <span className="absolute inset-0 rounded-full bg-gradient-to-tr from-blue-500 via-purple-500 to-pink-500 blur-xl opacity-60 animate-pulse z-0" style={{ filter: 'blur(16px)' }}></span>
-        <img
-          src="/profile.jpg"
-          alt="Palakolanu Dhanunjay Reddy profile"
-          className="mx-auto rounded-full w-40 h-40 object-cover border-4 border-blue-400 shadow-lg relative z-10"
-          style={{ boxShadow: '0 0 32px 4px #6366f1, 0 0 0 8px #181f36' }}
-        />
-      </motion.div>
-      <motion.h1
-        className="text-2xl md:text-6xl font-extrabold text-white tracking-tight md:whitespace-nowrap drop-shadow-lg"
-        whileHover={{ scale: 1.04, textShadow: '0 0 16px #6366f1' }}
-        transition={{ type: 'spring', stiffness: 200 }}
-      >
-        Dhanunjay Reddy Palakolanu
-      </motion.h1>
-        <h2 className="mt-4 text-lg md:text-xl font-semibold text-blue-400">B.Tech in IT | Aspiring Full Stack Developer</h2>
-        <h3 className="mt-1 text-lg md:text-xl font-semibold text-blue-300">Open Source Enthusiastic</h3>
-        <p className="mt-6 text-lg text-slate-300">
-Engineer by training,innovator by mindset.Building intelligent systems for real users.
-        </p>
-        <a
+        {/* Profile Image */}
+        <motion.div
+          className="relative mb-8 flex justify-center"
+          animate={{ y: [0, -10, 0] }}
+          transition={{ repeat: Infinity, duration: 4, ease: 'easeInOut' }}
+        >
+          <div className="relative">
+            {/* Glow effect */}
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FF6B35] via-[#039BE5] to-[#FFCA28] blur-xl opacity-30 animate-pulse"></div>
+            
+            {/* Profile image */}
+            <img
+              src="/profile.jpg"
+              alt="Palakolanu Dhanunjay Reddy profile"
+              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-[#FF6B35] shadow-2xl"
+              style={{ 
+                boxShadow: '0 0 40px rgba(255, 107, 53, 0.3), 0 0 80px rgba(3, 155, 229, 0.2)' 
+              }}
+            />
+            
+            {/* Status indicator */}
+            <div className="absolute bottom-2 right-2 w-6 h-6 bg-[#4CAF50] rounded-full border-4 border-[#0D1117] animate-pulse"></div>
+          </div>
+        </motion.div>
+
+        {/* Name */}
+        <motion.h1
+          className="text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 leading-tight"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.8 }}
+        >
+          <span className="bg-gradient-to-r from-[#FF6B35] via-[#039BE5] to-[#FFCA28] bg-clip-text text-transparent">
+            Dhanunjay Reddy
+          </span>
+          <br />
+          <span className="text-white">Palakolanu</span>
+        </motion.h1>
+
+        {/* Title */}
+        <motion.div
+          className="mb-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
+        >
+          <h2 className="text-xl md:text-2xl font-semibold text-[#039BE5] mb-2">
+            B.Tech in Information Technology
+          </h2>
+          <h3 className="text-lg md:text-xl font-medium text-[#FFCA28] mb-2">
+            Full Stack Developer
+          </h3>
+          <p className="text-[#F7FAFC]/80 text-base md:text-lg max-w-2xl mx-auto">
+            Engineer by training, innovator by mindset. Building intelligent systems for real users with modern technologies.
+          </p>
+        </motion.div>
+
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.8 }}
+        >
+          <a
             href="/Palakolanu-Dhanunjay-Reddy-Entry-Level-Web-Developer.pdf"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center justify-center mt-10 px-8 py-4 bg-blue-600 text-white font-bold rounded-full text-lg shadow-lg hover:bg-blue-700 transition-transform transform hover:scale-105"
-        >
+            className="firebase-button inline-flex items-center px-8 py-4 text-lg font-semibold rounded-xl transform hover:scale-105 transition-all duration-300"
+          >
             <DownloadIcon />
             Download Resume
-        </a>
+          </a>
+          
+          <a
+            href="#contact"
+            className="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-[#039BE5] text-[#039BE5] hover:bg-[#039BE5] hover:text-white transition-all duration-300 transform hover:scale-105"
+          >
+            Get In Touch
+          </a>
+        </motion.div>
+
+        {/* Tech Stack Preview */}
+        <motion.div
+          className="mt-8 sm:mt-12 flex flex-wrap justify-center gap-2 sm:gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8 }}
+        >
+          {['React', 'Node.js', 'Python', 'JavaScript', 'Git & GitHub ', 'Vercel'].map((tech, index) => (
+            <span
+              key={tech}
+              className="px-3 sm:px-4 py-2 bg-[#2D3748]/50 backdrop-blur-sm border border-[#FF6B35]/20 rounded-full text-xs sm:text-sm font-medium text-white/90"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              {tech}
+            </span>
+          ))}
+        </motion.div>
+      </motion.div>
     </div>
-  </motion.section>
+  </section>
 );
 
 export default Hero;

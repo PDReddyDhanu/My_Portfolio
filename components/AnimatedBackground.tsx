@@ -1,4 +1,4 @@
-import React from 'react';
+
 import Particles from 'react-tsparticles';
 import { loadFull } from 'tsparticles';
 
@@ -16,45 +16,62 @@ const AnimatedBackground = () => {
         background: { color: 'transparent' },
         fpsLimit: 60,
         particles: {
-          number: { value: 60, density: { enable: true, area: 800 } },
-          color: { value: ['#3b82f6', '#6366f1', '#a21caf'] },
+          number: { 
+            value: 40, 
+            density: { enable: true, area: 1000 } 
+          },
+          color: { 
+            value: ['#FF6B35', '#039BE5', '#FFCA28', '#4CAF50'] 
+          },
           shape: {
             type: 'circle',
           },
           opacity: {
-            value: 0.5,
+            value: 0.3,
             random: true,
+            anim: {
+              enable: true,
+              speed: 1,
+              opacity_min: 0.1,
+              sync: false
+            }
           },
           size: {
-            value: 4,
-            random: { enable: true, minimumValue: 2 },
+            value: 3,
+            random: { enable: true, minimumValue: 1 },
+            anim: {
+              enable: true,
+              speed: 2,
+              size_min: 0.1,
+              sync: false
+            }
           },
           links: {
             enable: true,
-            distance: 120,
-            color: '#6366f1',
-            opacity: 0.3,
-            width: 2,
+            distance: 150,
+            color: '#FF6B35',
+            opacity: 0.2,
+            width: 1,
           },
           move: {
             enable: true,
-            speed: 2,
+            speed: 1.5,
             direction: 'none',
             random: false,
             straight: false,
-            outModes: { default: 'out' },
+            outModes: { default: 'bounce' },
             attract: { enable: true, rotateX: 600, rotateY: 1200 },
           },
         },
         interactivity: {
           events: {
-            onHover: { enable: true, mode: 'repulse' },
+            onHover: { enable: true, mode: 'grab' },
             onClick: { enable: true, mode: 'push' },
             resize: true,
           },
           modes: {
-            repulse: { distance: 100, duration: 0.4 },
-            push: { quantity: 4 },
+            grab: { distance: 140, links: { opacity: 0.5 } },
+            push: { quantity: 3 },
           },
         },
         detectRetina: true,

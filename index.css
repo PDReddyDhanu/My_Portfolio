@@ -1,19 +1,253 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+:root {
+  /* Firebase-inspired color palette */
+  --firebase-orange: #FF6B35;
+  --firebase-blue: #039BE5;
+  --firebase-yellow: #FFCA28;
+  --firebase-green: #4CAF50;
+  --firebase-red: #F44336;
+  --firebase-dark: #1A1A1A;
+  --firebase-darker: #0D1117;
+  --firebase-gray: #2D3748;
+  --firebase-light-gray: #4A5568;
+  --firebase-white: #FFFFFF;
+  --firebase-off-white: #F7FAFC;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  background: #0a1026;
-  color: #fff;
-  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, var(--firebase-darker) 0%, var(--firebase-dark) 100%);
+  color: var(--firebase-white);
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
+  line-height: 1.6;
+  overflow-x: hidden;
 }
 
-section {
-  margin-bottom: 3rem;
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
 }
 
+/* Custom scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
-  background: #1a2238;
 }
+
+::-webkit-scrollbar-track {
+  background: var(--firebase-dark);
+}
+
 ::-webkit-scrollbar-thumb {
-  background: #394867;
+  background: var(--firebase-orange);
   border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #e55a2b;
+}
+
+/* Global animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Video styling */
+video {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 0 0 8px 8px;
+  background: #000;
+}
+
+video::-webkit-media-controls {
+  display: none !important;
+}
+
+video::-webkit-media-controls-panel {
+  display: none !important;
+}
+
+video::-webkit-media-controls-play-button {
+  display: none !important;
+}
+
+video::-webkit-media-controls-start-playback-button {
+  display: none !important;
+}
+
+/* Browser frame effects */
+.browser-frame {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.browser-frame:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+}
+
+/* Project card hover effects */
+.project-card {
+  transition: all 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+}
+
+/* Tech stack badges */
+.tech-badge {
+  transition: all 0.2s ease;
+}
+
+.tech-badge:hover {
+  transform: scale(1.05);
+  background-color: rgba(255, 107, 53, 0.1);
+  border-color: #FF6B35;
+}
+
+/* Utility classes */
+.firebase-gradient {
+  background: linear-gradient(135deg, var(--firebase-orange) 0%, var(--firebase-blue) 100%);
+}
+
+.firebase-card {
+  background: rgba(26, 26, 26, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 107, 53, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.firebase-button {
+  background: linear-gradient(135deg, var(--firebase-orange) 0%, #e55a2b 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 24px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+}
+
+.firebase-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+  }
+  
+  .browser-frame {
+    margin: 0 -1rem;
+  }
+  
+  .firebase-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .firebase-button {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 1rem;
+  }
+  
+  .firebase-card {
+    padding: 0.75rem;
+    border-radius: 10px;
+  }
+  
+  .firebase-button {
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+  }
+  
+  .container {
+    padding: 0 0.75rem;
+  }
+  
+  .firebase-card {
+    padding: 0.5rem;
+    border-radius: 8px;
+  }
+}
+
+/* Section spacing */
+section {
+  margin-bottom: 4rem;
+  padding: 2rem 0;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    padding: 0 4rem;
+  }
 } 

@@ -1,43 +1,134 @@
 
 import React from 'react';
-import ParallaxTilt from 'react-parallax-tilt';
+import { motion } from 'framer-motion';
 
-const achievements: string[] = [
-  "Top 10% in AICTE GenAI Virtual Internship",
-  "Multiple live project deployments on Netlify",
-  "Consistently maintained 8.74+ CGPA in engineering",
-  "Certified in Python by IIT Bombay and Full Stack Web Development",
-  "Delivered practical impact through real-world AI and web projects",
+const achievements = [
+  {
+    title: "Top 10% Performance",
+    description: "Achieved top 10% ranking in AICTE GenAI Virtual Internship, demonstrating exceptional understanding of generative AI concepts and practical implementation skills.",
+    icon: "🥇",
+    color: "#FF6B35"
+  },
+  {
+    title: "Academic Excellence",
+    description: "Consistently maintained 8.76+ CGPA in engineering, showcasing strong academic performance and dedication to learning across all subjects.",
+    icon: "🎓",
+    color: "#039BE5"
+  },
+  {
+    title: "Project Deployments",
+    description: "Successfully deployed multiple live projects on Netlify, including Short Music Tunes and AI Chatbot Assistant, demonstrating practical web development skills.",
+    icon: "🚀",
+    color: "#FFCA28"
+  },
+  {
+    title: "Industry Certifications",
+    description: "Certified in Python by IIT Bombay and Full Stack Web Development, along with Microsoft AI-900 and AI-102 certifications through Infosys Finishing School.",
+    icon: "🏆",
+    color: "#4CAF50"
+  },
+  {
+    title: "Open Source Contribution",
+    description: "Actively contributed to open-source projects and collaborated with peers on GitHub, enhancing teamwork and version control skills.",
+    icon: "💻",
+    color: "#F44336"
+  },
+  {
+    title: "Real-World Impact",
+    description: "Delivered practical impact through real-world AI and web projects that solve actual problems and provide value to users.",
+    icon: "🌟",
+    color: "#9C27B0"
+  }
 ];
 
 const SectionTitle = ({ icon, children }: { icon: string; children: React.ReactNode }) => (
-    <h2 className="text-3xl font-bold text-slate-900 mb-8 flex items-center">
-        <span className="text-4xl mr-4">{icon}</span>
+    <motion.h2 
+        className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+    >
+        <span className="text-4xl md:text-5xl mr-4">{icon}</span>
         {children}
-    </h2>
+    </motion.h2>
 );
 
-const TrophyIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-yellow-500 mr-3 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.196-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.783-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
-    </svg>
+const AchievementCard = ({ achievement, index }: { achievement: any; index: number }) => (
+    <motion.div
+        className="firebase-card p-6 group cursor-pointer"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6, delay: index * 0.1 }}
+        viewport={{ once: true }}
+        whileHover={{ y: -5, scale: 1.02 }}
+    >
+        <div className="flex items-start space-x-4">
+            <div 
+                className="flex items-center justify-center w-12 h-12 rounded-xl text-white text-xl shadow-lg flex-shrink-0"
+                style={{ backgroundColor: achievement.color }}
+            >
+                {achievement.icon}
+            </div>
+            <div className="flex-1">
+                <h3 className="font-bold text-white text-lg mb-2 group-hover:text-[#FF6B35] transition-colors duration-300">
+                    {achievement.title}
+                </h3>
+                <p className="text-[#F7FAFC]/80 text-sm leading-relaxed">{achievement.description}</p>
+            </div>
+        </div>
+    </motion.div>
 );
-
 
 const Achievements = () => (
-  <ParallaxTilt glareEnable={true} glareMaxOpacity={0.12} scale={1.03} transitionSpeed={1200} className="rounded-3xl">
-    <section id="achievements" className="max-w-4xl mx-auto bg-[#181f36] p-8 md:p-12 rounded-3xl shadow-lg shadow-blue-900">
-      <SectionTitle icon="🏆"><span className="text-white">Achievements</span></SectionTitle>
-      <div className="mt-6 text-slate-300">
-        <ul className="space-y-3">
-          <li>Completed multiple industry-recognized virtual internships in AI & ML, Google Generative AI, and Web Full Stack Development.</li>
-          <li>Successfully completed Microsoft AI-900 and AI-102 certifications as part of the Infosys Finishing School for Employability Training (2025).</li>
-          <li>Built and deployed real-world projects including Short Music Tunes and an AI Chatbot Assistant, showcasing practical application of full stack and AI knowledge.</li>
-          <li>Actively contributed to open-source projects and collaborated with peers on GitHub, enhancing teamwork and version control skills.</li>
-        </ul>
-      </div>
+    <section id="achievements" className="py-20 px-4">
+        <div className="container mx-auto max-w-6xl">
+            <SectionTitle icon="🏆">Achievements & Recognition</SectionTitle>
+            
+            <motion.div
+                className="text-center mb-12"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+            >
+                <p className="text-lg text-[#F7FAFC]/80 max-w-2xl mx-auto">
+                    Milestones and accomplishments that reflect dedication, hard work, and continuous growth in technology and development.
+                </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
+                {achievements.map((achievement, index) => (
+                    <AchievementCard key={achievement.title} achievement={achievement} index={index} />
+                ))}
+            </div>
+
+            {/* Stats Section */}
+            <motion.div
+                className="firebase-card p-8"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.6 }}
+                viewport={{ once: true }}
+            >
+                <h3 className="text-2xl font-bold text-white mb-6 text-center">Key Metrics</h3>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                    {[
+                        { label: "CGPA", value: "8.76+", icon: "📊" },
+                        { label: "Projects", value: "7+", icon: "💼" },
+                        { label: "Certifications", value: "8+", icon: "🏅" },
+                        { label: "Internships", value: "4+", icon: "🎯" }
+                    ].map((stat) => (
+                        <div key={stat.label} className="text-center">
+                            <div className="text-3xl mb-2">{stat.icon}</div>
+                            <div className="text-2xl font-bold text-[#FF6B35] mb-1">{stat.value}</div>
+                            <div className="text-[#F7FAFC]/70 text-sm">{stat.label}</div>
+                        </div>
+                    ))}
+                </div>
+            </motion.div>
+        </div>
     </section>
-  </ParallaxTilt>
 );
 
 export default Achievements;
