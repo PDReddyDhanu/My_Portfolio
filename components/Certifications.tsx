@@ -16,7 +16,7 @@ const certifications = [
     issuer: "Infosys Finishing School Employability Training",
     date: "July 2025",
     description: "Completed foundational (AI-900) and intermediate (AI-102) level courses on Artificial Intelligence, covering core AI concepts, Azure AI services, and real-world AI solution development under Infosys's employability training program.",
-    pdf: "/Microsoft.pdf",
+    pdf: "/microsoft.pdf",
     color: "#FF6B35"
   },
   {
