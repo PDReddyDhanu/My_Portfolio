@@ -114,7 +114,7 @@ const Achievements = () => (
                 <h3 className="text-2xl font-bold text-white mb-6 text-center">Key Metrics</h3>
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                     {[
-                        { label: "CGPA", value: "8.76+", icon: "📊" },
+                        { label: "CGPA", value: "8.80+", icon: "📊" },
                         { label: "Projects", value: "7+", icon: "💼" },
                         { label: "Certifications", value: "8+", icon: "🏅" },
                         { label: "Internships", value: "4+", icon: "🎯" }
