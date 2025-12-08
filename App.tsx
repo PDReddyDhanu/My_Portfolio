@@ -11,6 +11,14 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
 import LoadingScreen from './components/LoadingScreen';
+import ScrollProgress from './components/ScrollProgress';
+import ScrollToTop from './components/ScrollToTop';
+import ParticleCursor from './components/ParticleCursor';
+import Timeline from './components/Timeline';
+import AIChatbot from './components/AIChatbot';
+import GitHubActivity from './components/GitHubActivity';
+import InteractiveTerminal from './components/InteractiveTerminal';
+import SkillVisualization from './components/SkillVisualization';
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -47,7 +55,7 @@ function App() {
 
     document.addEventListener('click', handleClick);
     window.addEventListener('scroll', handleScroll);
-    
+
     return () => {
       document.removeEventListener('click', handleClick);
       window.removeEventListener('scroll', handleScroll);
@@ -61,13 +69,16 @@ function App() {
 
   return (
     <>
+      <ScrollProgress />
+      <ParticleCursor />
       <AnimatedBackground />
+      <ScrollToTop />
+      <AIChatbot />
       {/* Header Navigation */}
-      <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-[#0D1117]/95 backdrop-blur-md shadow-lg border-b border-[#FF6B35]/20' 
-          : 'bg-transparent'
-      }`}>
+      <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
+        ? 'bg-[#0D1117]/95 backdrop-blur-md shadow-lg border-b border-[#FF6B35]/20'
+        : 'bg-transparent'
+        }`}>
         <nav className="container mx-auto flex items-center justify-between py-4 px-4">
           {/* Logo */}
           <div className="flex items-center space-x-2">
@@ -93,7 +104,7 @@ function App() {
           </div>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
@@ -108,7 +119,7 @@ function App() {
             )}
           </button>
         </nav>
-        
+
         {/* Mobile Navigation Menu */}
         {isMobileMenuOpen && (
           <motion.div
@@ -139,9 +150,13 @@ function App() {
       <main className="relative z-10">
         <section id="hero"><Hero /></section>
         <section id="about"><About /></section>
+        <section id="skills-visualization"><SkillVisualization /></section>
         <section id="skills"><Skills /></section>
         <section id="projects"><Projects /></section>
+        <section id="github-activity"><GitHubActivity /></section>
+        <section id="terminal"><InteractiveTerminal /></section>
         <section id="internships"><Internships /></section>
+        <section id="timeline"><Timeline /></section>
         <section id="certifications"><Certifications /></section>
         <section id="achievements"><Achievements /></section>
         <section id="contact"><Contact /></section>

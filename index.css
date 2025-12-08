@@ -13,6 +13,23 @@
   --firebase-light-gray: #4A5568;
   --firebase-white: #FFFFFF;
   --firebase-off-white: #F7FAFC;
+
+  /* Theme variables */
+  --bg-primary: #0D1117;
+  --bg-secondary: #1A1A1A;
+  --bg-card: rgba(26, 26, 26, 0.8);
+  --text-primary: #FFFFFF;
+  --text-secondary: rgba(247, 250, 252, 0.8);
+  --border-color: rgba(255, 107, 53, 0.2);
+}
+
+[data-theme='light'] {
+  --bg-primary: #F7FAFC;
+  --bg-secondary: #FFFFFF;
+  --bg-card: rgba(255, 255, 255, 0.9);
+  --text-primary: #1A1A1A;
+  --text-secondary: rgba(26, 26, 26, 0.7);
+  --border-color: rgba(255, 107, 53, 0.3);
 }
 
 * {
@@ -22,12 +39,13 @@
 }
 
 body {
-  background: linear-gradient(135deg, var(--firebase-darker) 0%, var(--firebase-dark) 100%);
-  color: var(--firebase-white);
+  background: linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%);
+  color: var(--text-primary);
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   min-height: 100vh;
   line-height: 1.6;
   overflow-x: hidden;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 /* Smooth scrolling */
@@ -59,6 +77,7 @@ html {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -66,20 +85,62 @@ html {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 1;
   }
+
   50% {
     opacity: 0.7;
   }
 }
 
 @keyframes float {
-  0%, 100% {
+
+  0%,
+  100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-10px);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
 
@@ -145,11 +206,19 @@ video::-webkit-media-controls-start-playback-button {
 }
 
 .firebase-card {
-  background: rgba(26, 26, 26, 0.8);
+  background: var(--bg-card);
   backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 107, 53, 0.2);
+  border: 1px solid var(--border-color);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
 }
 
 .firebase-button {
@@ -180,16 +249,16 @@ video::-webkit-media-controls-start-playback-button {
   body {
     font-size: 14px;
   }
-  
+
   .browser-frame {
     margin: 0 -1rem;
   }
-  
+
   .firebase-card {
     padding: 1rem;
     border-radius: 12px;
   }
-  
+
   .firebase-button {
     padding: 10px 20px;
     font-size: 14px;
@@ -200,12 +269,12 @@ video::-webkit-media-controls-start-playback-button {
   .container {
     padding: 0 1rem;
   }
-  
+
   .firebase-card {
     padding: 0.75rem;
     border-radius: 10px;
   }
-  
+
   .firebase-button {
     padding: 8px 16px;
     font-size: 13px;
@@ -216,11 +285,11 @@ video::-webkit-media-controls-start-playback-button {
   body {
     font-size: 13px;
   }
-  
+
   .container {
     padding: 0 0.75rem;
   }
-  
+
   .firebase-card {
     padding: 0.5rem;
     border-radius: 8px;
@@ -250,4 +319,4 @@ section {
   .container {
     padding: 0 4rem;
   }
-} 
+}

@@ -1,9 +1,9 @@
-
 import React from 'react';
 import { motion } from 'framer-motion';
+import StatsCounter from './StatsCounter';
 
 const SectionTitle = ({ icon, children }: { icon: string; children: React.ReactNode }) => (
-    <motion.h2 
+    <motion.h2
         className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -19,7 +19,7 @@ const About = () => (
     <section id="about" className="py-20 px-4">
         <div className="container mx-auto max-w-6xl">
             <SectionTitle icon="👨‍💻">About Me</SectionTitle>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
                 {/* Text Content */}
                 <motion.div
@@ -31,7 +31,7 @@ const About = () => (
                 >
                     <div className="firebase-card p-8">
                         <p className="text-lg text-[#F7FAFC]/90 leading-relaxed mb-6">
-                            Hi! I'm <span className="text-[#FF6B35] font-semibold">Palakolanu Dhanunjay Reddy</span>, a passionate and driven final-year B.Tech student in Information Technology at VJIT Hyderabad.
+                            Hi! I'm <span className="text-[#FF6B35] font-semibold">Palakolanu Dhanunjay Reddy</span>, a passionate and driven B.Tech student in Information Technology at Vidya Jyothi Institute of Technology, Hyderabad, with a CGPA of 8.8/10.
                         </p>
                         <p className="text-lg text-[#F7FAFC]/90 leading-relaxed mb-6">
                             I specialize in <span className="text-[#039BE5] font-semibold">Full Stack Web Development</span> and <span className="text-[#FFCA28] font-semibold">AI-powered solutions</span>, with hands-on experience building real-world applications—from responsive music preview platforms to intelligent AI chatbots for education.
@@ -81,6 +81,9 @@ const About = () => (
                 </motion.div>
             </div>
 
+            {/* Stats Counter */}
+            <StatsCounter />
+
             {/* Call to Action */}
             <motion.div
                 className="mt-12 text-center"
@@ -89,9 +92,9 @@ const About = () => (
                 transition={{ duration: 0.6, delay: 0.4 }}
                 viewport={{ once: true }}
             >
-                <a 
-                    href="/Palakolanu-Dhanunjay-Reddy-Entry-Level-Web-Developer.pdf" 
-                    target="_blank" 
+                <a
+                    href="/Palakolanu-Dhanunjay-Reddy-Entry-Level-Web-Developer.pdf"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="firebase-button inline-flex items-center px-8 py-4 text-lg font-semibold rounded-xl transform hover:scale-105 transition-all duration-300"
                 >

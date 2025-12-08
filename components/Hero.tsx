@@ -1,11 +1,12 @@
 
 
 import { motion } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 
 const DownloadIcon = () => (
-    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 inline-block" viewBox="0 0 20 20" fill="currentColor">
-        <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
-    </svg>
+  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2 inline-block" viewBox="0 0 20 20" fill="currentColor">
+    <path fillRule="evenodd" d="M3 17a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zm3.293-7.707a1 1 0 011.414 0L9 10.586V3a1 1 0 112 0v7.586l1.293-1.293a1 1 0 111.414 1.414l-3 3a1 1 0 01-1.414 0l-3-3a1 1 0 010-1.414z" clipRule="evenodd" />
+  </svg>
 );
 
 const Hero = () => (
@@ -33,17 +34,17 @@ const Hero = () => (
           <div className="relative">
             {/* Glow effect */}
             <div className="absolute inset-0 rounded-full bg-gradient-to-r from-[#FF6B35] via-[#039BE5] to-[#FFCA28] blur-xl opacity-30 animate-pulse"></div>
-            
+
             {/* Profile image */}
             <img
               src="/profile.jpg"
               alt="Palakolanu Dhanunjay Reddy profile"
               className="relative w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-[#FF6B35] shadow-2xl"
-              style={{ 
-                boxShadow: '0 0 40px rgba(255, 107, 53, 0.3), 0 0 80px rgba(3, 155, 229, 0.2)' 
+              style={{
+                boxShadow: '0 0 40px rgba(255, 107, 53, 0.3), 0 0 80px rgba(3, 155, 229, 0.2)'
               }}
             />
-            
+
             {/* Status indicator */}
             <div className="absolute bottom-2 right-2 w-6 h-6 bg-[#4CAF50] rounded-full border-4 border-[#0D1117] animate-pulse"></div>
           </div>
@@ -76,9 +77,21 @@ const Hero = () => (
           <h3 className="text-lg md:text-xl font-medium text-[#FFCA28] mb-2">
             Full Stack Developer
           </h3>
-          <p className="text-[#F7FAFC]/80 text-base md:text-lg max-w-2xl mx-auto">
-            Engineer by training, innovator by mindset. Building intelligent systems for real users with modern technologies.
-          </p>
+          <div className="text-[#F7FAFC]/80 text-base md:text-lg max-w-2xl mx-auto min-h-[60px]">
+            <TypeAnimation
+              sequence={[
+                'Engineer by training, innovator by mindset.',
+                2000,
+                'Building intelligent systems for real users.',
+                2000,
+                'Creating amazing web experiences with modern tech.',
+                2000,
+              ]}
+              wrapper="p"
+              speed={50}
+              repeat={Infinity}
+            />
+          </div>
         </motion.div>
 
         {/* CTA Buttons */}
@@ -97,7 +110,7 @@ const Hero = () => (
             <DownloadIcon />
             Download Resume
           </a>
-          
+
           <a
             href="#contact"
             className="inline-flex items-center px-8 py-4 text-lg font-semibold rounded-xl border-2 border-[#039BE5] text-[#039BE5] hover:bg-[#039BE5] hover:text-white transition-all duration-300 transform hover:scale-105"
