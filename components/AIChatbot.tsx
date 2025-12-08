@@ -104,7 +104,7 @@ const AIChatbot = () => {
             {/* Chatbot Toggle Button */}
             <motion.button
                 onClick={() => setIsOpen(!isOpen)}
-                className="fixed bottom-8 right-8 z-50 w-16 h-16 bg-gradient-to-r from-[#FF6B35] to-[#039BE5] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300"
+                className="fixed bottom-8 left-8 z-50 w-16 h-16 bg-gradient-to-r from-[#FF6B35] to-[#039BE5] rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300"
                 whileHover={{ scale: 1.1 }}
                 whileTap={{ scale: 0.9 }}
                 initial={{ scale: 0 }}
@@ -150,7 +150,7 @@ const AIChatbot = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: 100, scale: 0.8 }}
                         transition={{ type: 'spring', stiffness: 260, damping: 20 }}
-                        className="fixed bottom-28 right-8 z-50 w-96 h-[600px] bg-[#1A202C]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#FF6B35]/20 flex flex-col overflow-hidden"
+                        className="fixed bottom-28 left-8 z-50 w-96 h-[600px] bg-[#1A202C]/95 backdrop-blur-xl rounded-2xl shadow-2xl border border-[#FF6B35]/20 flex flex-col overflow-hidden"
                     >
                         {/* Header */}
                         <div className="bg-gradient-to-r from-[#FF6B35] to-[#039BE5] p-4 flex items-center space-x-3">
