@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 interface CommandOutput {
     command: string;
-    output: string | JSX.Element;
+    output: string | React.ReactElement;
     timestamp: Date;
 }
 
@@ -36,7 +36,7 @@ const InteractiveTerminal = () => {
         }
     }, [history]);
 
-    const commands: { [key: string]: () => string | JSX.Element } = {
+    const commands: { [key: string]: () => string | React.ReactElement } = {
         help: () => (
             <div className="space-y-2">
                 <div className="text-[#FFCA28] font-bold">Available Commands:</div>
@@ -183,7 +183,7 @@ const InteractiveTerminal = () => {
             return;
         }
 
-        let output: string | JSX.Element;
+        let output: string | React.ReactElement;
 
         if (trimmedCmd === '') {
             return;
