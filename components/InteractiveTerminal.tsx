@@ -1,0 +1,340 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+
+interface CommandOutput {
+    command: string;
+    output: string | React.ReactElement;
+    timestamp: Date;
+}
+
+const InteractiveTerminal = () => {
+    const [input, setInput] = useState('');
+    const [history, setHistory] = useState<CommandOutput[]>([]);
+    const [commandHistory, setCommandHistory] = useState<string[]>([]);
+    const [historyIndex, setHistoryIndex] = useState(-1);
+    const inputRef = useRef<HTMLInputElement>(null);
+    const terminalRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        // Show welcome message
+        setHistory([{
+            command: '',
+            output: (
+                <div className="space-y-2">
+                    <div className="text-[#FFCA28] font-bold">Welcome to Dhanunjay's Interactive Terminal! 🚀</div>
+                    <div className="text-white/80">Type <span className="text-[#FF6B35]">help</span> to see available commands.</div>
+                </div>
+            ),
+            timestamp: new Date()
+        }]);
+    }, []);
+
+    useEffect(() => {
+        // Auto-scroll to bottom
+        if (terminalRef.current) {
+            terminalRef.current.scrollTop = terminalRef.current.scrollHeight;
+        }
+    }, [history]);
+
+    const commands: { [key: string]: () => string | React.ReactElement } = {
+        help: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">Available Commands:</div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
+                    <div><span className="text-[#FF6B35]">about</span> - Learn about me</div>
+                    <div><span className="text-[#FF6B35]">skills</span> - View my technical skills</div>
+                    <div><span className="text-[#FF6B35]">projects</span> - See my projects</div>
+                    <div><span className="text-[#FF6B35]">experience</span> - View work experience</div>
+                    <div><span className="text-[#FF6B35]">education</span> - My educational background</div>
+                    <div><span className="text-[#FF6B35]">contact</span> - Get contact information</div>
+                    <div><span className="text-[#FF6B35]">github</span> - Open GitHub profile</div>
+                    <div><span className="text-[#FF6B35]">linkedin</span> - Open LinkedIn profile</div>
+                    <div><span className="text-[#FF6B35]">resume</span> - Download resume</div>
+                    <div><span className="text-[#FF6B35]">clear</span> - Clear terminal</div>
+                    <div><span className="text-[#FF6B35]">whoami</span> - Display current user</div>
+                    <div><span className="text-[#FF6B35]">date</span> - Show current date/time</div>
+                </div>
+            </div>
+        ),
+        about: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">👨‍💻 About Dhanunjay Reddy</div>
+                <div className="text-white/90">
+                    Full Stack Developer & AI Enthusiast passionate about building innovative web applications.
+                    Specializing in React, TypeScript, Next.js, and AI integration with Google Gemini.
+                </div>
+                <div className="text-white/70 mt-2">
+                    🎓 B.Tech in IT | CGPA: 8.8/10<br />
+                    💼 Full Stack Developer Intern @ Exposys Data Labs<br />
+                    🏆 Multiple certifications from Google, Microsoft, IIT Bombay
+                </div>
+            </div>
+        ),
+        skills: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">🛠️ Technical Skills</div>
+                <div className="mt-2 space-y-1">
+                    <div><span className="text-[#039BE5]">Frontend:</span> React, TypeScript, Next.js, Tailwind CSS, HTML/CSS</div>
+                    <div><span className="text-[#039BE5]">Backend:</span> Node.js, Express, REST APIs</div>
+                    <div><span className="text-[#039BE5]">AI/ML:</span> Google Gemini API, Genkit, AI Integration</div>
+                    <div><span className="text-[#039BE5]">Database:</span> MongoDB, Firebase, MySQL</div>
+                    <div><span className="text-[#039BE5]">Cloud:</span> Vercel, Netlify, GitHub Pages</div>
+                    <div><span className="text-[#039BE5]">Tools:</span> Git, GitHub, VS Code, Figma</div>
+                </div>
+            </div>
+        ),
+        projects: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">🚀 Featured Projects</div>
+                <div className="mt-2 space-y-3">
+                    <div>
+                        <div className="text-[#FF6B35]">1. HackSprint</div>
+                        <div className="text-white/80 text-sm">AI-powered SaaS platform for hackathon management</div>
+                        <div className="text-white/60 text-xs">Tech: Next.js, TypeScript, Gemini API, Tailwind CSS</div>
+                    </div>
+                    <div>
+                        <div className="text-[#FF6B35]">2. AI Chatbot Assistant</div>
+                        <div className="text-white/80 text-sm">Smart educational chatbot with Google Gemini</div>
+                        <div className="text-white/60 text-xs">Tech: JavaScript, HTML, CSS, Gemini API</div>
+                    </div>
+                    <div>
+                        <div className="text-[#FF6B35]">3. Short Music Tunes</div>
+                        <div className="text-white/80 text-sm">Music preview app using iTunes API</div>
+                        <div className="text-white/60 text-xs">Tech: JavaScript, HTML, CSS, iTunes API</div>
+                    </div>
+                </div>
+            </div>
+        ),
+        experience: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">💼 Work Experience</div>
+                <div className="mt-2">
+                    <div className="text-[#FF6B35]">Full Stack Developer Intern</div>
+                    <div className="text-white/80">Exposys Data Labs</div>
+                    <div className="text-white/60 text-sm mt-1">
+                        • Developed responsive web applications using React and Node.js<br />
+                        • Implemented RESTful APIs and database integration<br />
+                        • Collaborated with cross-functional teams on multiple projects
+                    </div>
+                </div>
+            </div>
+        ),
+        education: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">🎓 Education</div>
+                <div className="mt-2">
+                    <div className="text-[#FF6B35]">B.Tech in Information Technology (IT)</div>
+                    <div className="text-white/80">Vidya Jyothi Institute of Technology, Hyderabad</div>
+                    <div className="text-white/60 text-sm">CGPA: 8.8/10 (2022-2026)</div>
+                </div>
+                <div className="mt-2">
+                    <div className="text-[#FF6B35]">Intermediate (MPC)</div>
+                    <div className="text-white/80">Sri Kakatiya Junior College, Nizamabad</div>
+                    <div className="text-white/60 text-sm">87.7% (2020-2022)</div>
+                </div>
+                <div className="mt-2">
+                    <div className="text-[#FF6B35]">SSC</div>
+                    <div className="text-white/80">Z.P. High School, Binola</div>
+                    <div className="text-white/60 text-sm">CGPA: 10/10 (2020)</div>
+                </div>
+                <div className="mt-3 text-white/80">
+                    <div className="text-[#039BE5]">Certifications:</div>
+                    <div className="text-sm text-white/70 mt-1">
+                        ✓ Google AI Essentials<br />
+                        ✓ Microsoft Certified Professional<br />
+                        ✓ IIT Bombay Python Certification<br />
+                        ✓ Salesforce Developer Certified
+                    </div>
+                </div>
+            </div>
+        ),
+        contact: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">📧 Contact Information</div>
+                <div className="mt-2 space-y-1 text-white/80">
+                    <div>📧 Email: palakolanudhanunjayreddy@gmail.com</div>
+                    <div>💼 LinkedIn: linkedin.com/in/palakolanu-dhanunjay-reddy</div>
+                    <div>🐙 GitHub: github.com/PDReddyDhanu</div>
+                    <div>🌐 Portfolio: dhanunportfolio.netlify.app</div>
+                </div>
+            </div>
+        ),
+        github: () => {
+            window.open('https://github.com/PDReddyDhanu', '_blank');
+            return '🐙 Opening GitHub profile...';
+        },
+        linkedin: () => {
+            window.open('https://www.linkedin.com/in/palakolanu-dhanunjay-reddy', '_blank');
+            return '💼 Opening LinkedIn profile...';
+        },
+        resume: () => {
+            return '📄 Resume download feature coming soon!';
+        },
+        whoami: () => 'guest@dhanunjay-portfolio',
+        date: () => new Date().toString(),
+        clear: () => ''
+    };
+
+    const executeCommand = (cmd: string) => {
+        const trimmedCmd = cmd.trim().toLowerCase();
+
+        if (trimmedCmd === 'clear') {
+            setHistory([]);
+            return;
+        }
+
+        let output: string | React.ReactElement;
+
+        if (trimmedCmd === '') {
+            return;
+        } else if (commands[trimmedCmd]) {
+            output = commands[trimmedCmd]();
+        } else {
+            output = (
+                <div>
+                    <span className="text-red-400">Command not found: {trimmedCmd}</span>
+                    <div className="text-white/60 text-sm mt-1">Type 'help' to see available commands.</div>
+                </div>
+            );
+        }
+
+        setHistory(prev => [...prev, {
+            command: cmd,
+            output,
+            timestamp: new Date()
+        }]);
+
+        setCommandHistory(prev => [...prev, cmd]);
+    };
+
+    const handleSubmit = (e: React.FormEvent) => {
+        e.preventDefault();
+        if (input.trim()) {
+            executeCommand(input);
+            setInput('');
+            setHistoryIndex(-1);
+        }
+    };
+
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            if (commandHistory.length > 0) {
+                const newIndex = historyIndex < commandHistory.length - 1 ? historyIndex + 1 : historyIndex;
+                setHistoryIndex(newIndex);
+                setInput(commandHistory[commandHistory.length - 1 - newIndex]);
+            }
+        } else if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            if (historyIndex > 0) {
+                const newIndex = historyIndex - 1;
+                setHistoryIndex(newIndex);
+                setInput(commandHistory[commandHistory.length - 1 - newIndex]);
+            } else {
+                setHistoryIndex(-1);
+                setInput('');
+            }
+        }
+    };
+
+    return (
+        <section id="terminal" className="py-20 px-4 relative">
+            {/* Background Elements */}
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF6B35]/5 rounded-full blur-3xl"></div>
+            </div>
+
+            <div className="container mx-auto max-w-5xl relative z-10">
+                {/* Section Title */}
+                <motion.h2
+                    className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center"
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                >
+                    <span className="text-4xl md:text-5xl mr-4">💻</span>
+                    Interactive Terminal
+                </motion.h2>
+
+                {/* Terminal Window */}
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6 }}
+                    viewport={{ once: true }}
+                    className="bg-[#1A202C] rounded-xl overflow-hidden shadow-2xl border border-[#4A5568]"
+                >
+                    {/* Terminal Header */}
+                    <div className="bg-[#2D3748] px-4 py-3 flex items-center space-x-2">
+                        <div className="flex space-x-2">
+                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                        </div>
+                        <div className="flex-1 text-center text-white/60 text-sm font-mono">
+                            guest@dhanunjay-portfolio: ~
+                        </div>
+                    </div>
+
+                    {/* Terminal Body */}
+                    <div
+                        ref={terminalRef}
+                        className="p-4 h-96 overflow-y-auto font-mono text-sm scrollbar-thin scrollbar-thumb-[#4A5568] scrollbar-track-transparent"
+                        onClick={() => inputRef.current?.focus()}
+                    >
+                        <AnimatePresence>
+                            {history.map((item, index) => (
+                                <motion.div
+                                    key={index}
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    transition={{ duration: 0.2 }}
+                                    className="mb-4"
+                                >
+                                    {item.command && (
+                                        <div className="flex items-center space-x-2 mb-2">
+                                            <span className="text-[#FF6B35]">➜</span>
+                                            <span className="text-[#039BE5]">~</span>
+                                            <span className="text-white">{item.command}</span>
+                                        </div>
+                                    )}
+                                    <div className="text-white/90 ml-6">{item.output}</div>
+                                </motion.div>
+                            ))}
+                        </AnimatePresence>
+
+                        {/* Input Line */}
+                        <form onSubmit={handleSubmit} className="flex items-center space-x-2">
+                            <span className="text-[#FF6B35]">➜</span>
+                            <span className="text-[#039BE5]">~</span>
+                            <input
+                                ref={inputRef}
+                                type="text"
+                                value={input}
+                                onChange={(e) => setInput(e.target.value)}
+                                onKeyDown={handleKeyDown}
+                                className="flex-1 bg-transparent text-white outline-none font-mono"
+                                autoFocus
+                                spellCheck={false}
+                            />
+                        </form>
+                    </div>
+                </motion.div>
+
+                {/* Hint */}
+                <motion.p
+                    initial={{ opacity: 0 }}
+                    whileInView={{ opacity: 1 }}
+                    transition={{ duration: 0.6, delay: 0.3 }}
+                    viewport={{ once: true }}
+                    className="text-center text-white/40 text-sm mt-4"
+                >
+                    💡 Tip: Use ↑ ↓ arrow keys to navigate command history
+                </motion.p>
+            </div>
+        </section>
+    );
+};
+
+export default InteractiveTerminal;
