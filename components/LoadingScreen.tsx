@@ -6,34 +6,34 @@ const LoadingScreen = ({ onLoadingComplete }: { onLoadingComplete: () => void })
   const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
-    // Simulate loading progress
+    // Simulate loading progress rapidly for snappier experience
     const progressInterval = setInterval(() => {
       setLoadingProgress(prev => {
         if (prev >= 100) {
           clearInterval(progressInterval);
           return 100;
         }
-        return prev + Math.random() * 15;
+        return prev + 15 + Math.random() * 15;
       });
-    }, 200);
+    }, 80);
 
-    // Show content after a brief delay
     const contentTimer = setTimeout(() => {
       setShowContent(true);
-    }, 500);
-
-    // Complete loading after progress reaches 100%
-    const completeTimer = setTimeout(() => {
-      if (loadingProgress >= 100) {
-        onLoadingComplete();
-      }
-    }, 2500);
+    }, 150);
 
     return () => {
       clearInterval(progressInterval);
       clearTimeout(contentTimer);
-      clearTimeout(completeTimer);
     };
+  }, []);
+
+  useEffect(() => {
+    if (loadingProgress >= 100) {
+      const completeTimer = setTimeout(() => {
+        onLoadingComplete();
+      }, 500);
+      return () => clearTimeout(completeTimer);
+    }
   }, [loadingProgress, onLoadingComplete]);
 
   return (
