@@ -111,8 +111,13 @@ function App() {
 
           {/* Center Logo */}
           <div className="text-center absolute left-1/2 transform -translate-x-1/2 z-10">
-            <a href="#home" className="text-xl font-bold font-serif-heading text-white tracking-widest hover:text-[#FF6B35] transition-colors">
-              Dhanunjay<span className="text-[#FF6B35]">.</span>
+            <a href="#home" className="flex items-center gap-2 justify-center group">
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full overflow-hidden border border-white/10 group-hover:border-[#FF6B35]/50 transition-colors">
+                <img src="/profile.jpg" alt="Dhanunjay" className="w-full h-full object-cover" />
+              </div>
+              <span className="text-xl font-bold font-serif-heading text-white tracking-widest group-hover:text-[#FF6B35] transition-colors">
+                PDR<span className="text-[#FF6B35]">.</span>
+              </span>
             </a>
           </div>
 
