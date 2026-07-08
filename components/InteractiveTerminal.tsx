@@ -51,6 +51,7 @@ const InteractiveTerminal = () => {
                     <div><span className="text-[#FF6B35]">linkedin</span> - Open LinkedIn profile</div>
                     <div><span className="text-[#FF6B35]">resume</span> - Download resume</div>
                     <div><span className="text-[#FF6B35]">creator</span> - View content creator stats</div>
+                    <div><span className="text-[#FF6B35]">hire</span> - View hiring status</div>
                     <div><span className="text-[#FF6B35]">clear</span> - Clear terminal</div>
                     <div><span className="text-[#FF6B35]">whoami</span> - Display current user</div>
                     <div><span className="text-[#FF6B35]">date</span> - Show current date/time</div>
@@ -69,6 +70,22 @@ const InteractiveTerminal = () => {
                 </div>
                 <div className="text-white/60 text-xs mt-2 pl-4">
                     Workflow: Uses LLMs for scriptwriting, Generative AI for voice synthesis, and Premiere/CapCut for video editing to post updated tech news.
+                </div>
+            </div>
+        ),
+        hire: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">💼 Job Search Status</div>
+                <div className="mt-2 text-white/90">
+                    Dhanunjay is actively seeking full-time opportunities and internships:
+                </div>
+                <div className="text-white/70 mt-1 pl-4 space-y-1">
+                    <div>🎯 <span className="text-[#039BE5] font-semibold">Target Roles:</span> Full Stack Developer, AI Engineer, Salesforce Developer</div>
+                    <div>📈 <span className="text-[#FF6B35] font-semibold">Availability:</span> Immediate (2022-2026 Graduated Batch)</div>
+                    <div>📍 <span className="text-[#4CAF50] font-semibold">Location:</span> Hyderabad (Open to Remote & Relocation)</div>
+                </div>
+                <div className="text-white/60 text-xs mt-2 pl-4">
+                    Run the command <span className="text-[#FFCA28] font-semibold">contact</span> to get details on how to get in touch.
                 </div>
             </div>
         ),

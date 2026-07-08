@@ -35,7 +35,7 @@ export const Contact = () => {
           className="lg:col-span-5 space-y-8"
         >
           <p className="text-white/60 text-sm sm:text-base leading-relaxed">
-            I am always open to discussing new projects, creative opportunities, or technology collaborations. Feel free to shoot me a message or connect through my socials.
+            I am <strong className="text-[#FF6B35]">actively seeking full-time job opportunities and internships</strong> in Full Stack Web Development, Generative AI engineering, and Salesforce Development. If you have an open role, want to collaborate on a project, or just say hello, feel free to shoot me a message!
           </p>
 
           <div className="space-y-6">

@@ -34,6 +34,12 @@ export const Hero = () => {
         transition={{ duration: 0.8, delay: 0.2 }}
         className="max-w-3xl space-y-4 relative z-10"
       >
+        <div className="flex justify-center items-center gap-2 mb-3">
+          <span className="w-2 h-2 rounded-full bg-[#4CAF50] animate-pulse"></span>
+          <span className="text-[10px] sm:text-xs font-semibold tracking-wider text-[#4CAF50] bg-[#4CAF50]/10 px-3 py-1 rounded-full border border-[#4CAF50]/20 uppercase">
+            Open to Work / Seeking Opportunities
+          </span>
+        </div>
         <span className="text-xs font-bold tracking-[0.25em] text-[#FF6B35] uppercase block">
           Full Stack Developer & AI Innovator
         </span>

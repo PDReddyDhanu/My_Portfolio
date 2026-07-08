@@ -8,7 +8,8 @@ export const About = () => {
     { label: "CGPA", value: "8.82 / 10 (2022-2026)" },
     { label: "Location", value: "Hyderabad, India" },
     { label: "Languages", value: "English, Telugu, Hindi" },
-    { label: "Social Reach", value: "Instagram (20K+) / YouTube (3K+)" }
+    { label: "Social Reach", value: "Instagram (20K+) / YouTube (3K+)" },
+    { label: "Employment Status", value: "Actively seeking Full Stack / AI Developer roles" }
   ];
 
   return (

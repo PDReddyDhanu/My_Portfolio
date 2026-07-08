@@ -70,6 +70,11 @@ const AIChatbot = () => {
             return "Dhanunjay is a digital content creator with a strong audience: 🎥\n\n📱 Instagram: 20K+ Followers\n🎥 YouTube: 3K+ Subscribers\n\nHe leverages AI voice generation, automated scriptwriting, and advanced video editing to publish updated news and tech info!";
         }
 
+        // Job Seeking / Hiring
+        if (q.includes('hire') || q.includes('hiring') || q.includes('job') || q.includes('opportunity') || q.includes('work') || q.includes('career') || q.includes('seeking') || q.includes('position')) {
+            return "Yes! Dhanunjay Reddy is actively seeking job opportunities and internships! 💼\n\n🎯 Target Roles: Full Stack Developer, AI Engineer, Salesforce Developer\n📈 Status: Open to Work (B.Tech IT 2022-2026 Batch)\n📍 Location: Hyderabad (Open to Relocation / Remote)\n\nFeel free to reach out directly via the Contact section, email at palakolanudhanunjayreddy@gmail.com, or download his resume from the Hero section!";
+        }
+
         // Default responses
         const defaultResponses = [
             "That's an interesting question! You can ask me about:\n\n• Dhanunjay's skills and technologies\n• His projects and achievements\n• How to contact him\n• His education and experience\n\nWhat would you like to know?",
