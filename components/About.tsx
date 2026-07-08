@@ -30,13 +30,13 @@ export const About = () => {
             Hello! I'm <span className="text-[#FF6B35] font-semibold">Palakolanu Dhanunjay Reddy</span>, a developer and IT graduate (2022-2026 Batch) from Vidya Jyothi Institute of Technology, Hyderabad. 
           </p>
           <p>
-            My engineering journey is driven by a deep curiosity about how intelligent platforms are designed, built, and optimized. I focus heavily on **Full Stack Web Development** and **Artificial Intelligence integrations**, combining clean frontend interfaces with scalable server and database backends.
+            My engineering journey is driven by a deep curiosity about how intelligent platforms are designed, built, and optimized. I focus heavily on <span className="text-[#039BE5] font-semibold">Full Stack Web Development</span> and <span className="text-[#039BE5] font-semibold">Artificial Intelligence integrations</span>, combining clean frontend interfaces with scalable server and database backends.
           </p>
           <p>
             Over the past few years, I've built real-world applications including hackathon management platforms, AI-powered chatbots, and feedback systems. I enjoy solving complex logic problems and turning ideas into responsive, user-friendly software products.
           </p>
           <p>
-            Beyond software engineering, I am a digital **content creator** hosting **20K+ followers on Instagram** and **3K+ subscribers on YouTube**. I design and produce automated news updates and technical explainers by leveraging generative AI voice synthesis, automated scripting, and advanced video editing workflows.
+            Beyond software engineering, I am a digital <span className="text-[#FF6B35] font-semibold">content creator</span> hosting <span className="text-[#FFCA28] font-semibold">20K+ followers on Instagram</span> and <span className="text-[#FFCA28] font-semibold">3K+ subscribers on YouTube</span>. I design and produce automated news updates and technical explainers by leveraging generative AI voice synthesis, automated scripting, and advanced video editing workflows.
           </p>
         </motion.div>
 

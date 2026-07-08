@@ -87,7 +87,8 @@ export const Hero = () => {
         <span className="text-xs font-bold tracking-[0.25em] text-[#FF6B35] uppercase block">
           Full Stack Developer & AI Innovator
         </span>
-        <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif-heading text-white tracking-wide">
+        <h1 className="text-3xl sm:text-5xl lg:text-6xl font-bold font-serif-heading text-white tracking-wide leading-tight">
+          <span className="block text-xl sm:text-3xl lg:text-4xl font-sans font-light text-white/50 mb-1 tracking-wider">Palakolanu</span>
           Dhanunjay Reddy<span className="text-[#FF6B35]">.</span>
         </h1>
         <p className="text-white/60 text-sm sm:text-lg max-w-xl mx-auto leading-relaxed">
