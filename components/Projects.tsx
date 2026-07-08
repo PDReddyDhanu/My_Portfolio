@@ -3,6 +3,15 @@ import { motion } from 'framer-motion';
 
 const projects = [
   {
+    name: "Genkit ProStudio",
+    desc: "GenKit ProStudio is an all-in-one, AI-powered SaaS platform built with Next.js and Firebase to streamline the lifecycle of college academic projects. It provides a seamless, transparent, and efficient experience for students, guides, HoDs, and administrators—from proposal and team formation to final evaluation and automated reporting.",
+    video: "/genkitprostudio.mp4",
+    github: "", // Left empty to hide the link as no repo was provided
+    demo: "https://genkit-prostudio.vercel.app/",
+    tech: ["Next.js", "React", "TypeScript", "Firebase", "Genkit", "Tailwind CSS"],
+    url: "genkit-prostudio.vercel.app"
+  },
+  {
     name: "HackSprint: All-in-One Hackathon Platform",
     desc: "A SaaS platform designed to streamline internal college hackathons. Features dedicated portals for students, judges, and admins, Google Gemini-powered idea generation, automated certificate distribution, and interactive live leaderboards.",
     video: "/hacksprint-portfolio.mp4",
@@ -127,14 +136,16 @@ export const Projects = () => {
 
               {/* Minimalist Text Links */}
               <div className="flex space-x-6 pt-2 text-xs font-semibold uppercase tracking-wider">
-                <a
-                  href={project.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[#FF6B35] hover:text-white transition-colors flex items-center"
-                >
-                  Source Code <span className="ml-1 text-[10px]">→</span>
-                </a>
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-[#FF6B35] hover:text-white transition-colors flex items-center"
+                  >
+                    Source Code <span className="ml-1 text-[10px]">→</span>
+                  </a>
+                )}
                 <a
                   href={project.demo}
                   target="_blank"

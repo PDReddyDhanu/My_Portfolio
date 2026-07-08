@@ -36,8 +36,8 @@ const AIChatbot = () => {
         }
 
         // Projects
-        if (q.includes('project') || q.includes('hacksprint')) {
-            return "His notable projects include:\n\n🏆 HackSprint - An AI-powered SaaS platform for hackathon management with real-time leaderboards and automated certificate generation.\n\n💬 AI Chatbot Assistant - A smart educational chatbot using Google Gemini API.\n\n🎵 Short Music Tunes - A music preview app using iTunes API.\n\n🍽️ Hostel Food Feedback System - A feedback management platform.\n\nWant to know more about a specific project?";
+        if (q.includes('project') || q.includes('hacksprint') || q.includes('genkit') || q.includes('prostudio')) {
+            return "His notable projects include:\n\n🎓 Genkit ProStudio - An all-in-one, AI-powered SaaS platform built with Next.js & Firebase to streamline the lifecycle of college academic projects. Features role-based workflows for students, guides, HoDs, and admins, multi-level approval systems, AI-powered abstract summarizers, support triage, and centralized evaluation. Live at genkit-prostudio.vercel.app\n\n🏆 HackSprint - An AI-powered SaaS platform for hackathon management with real-time leaderboards and automated certificate generation.\n\n💬 AI Chatbot Assistant - A smart educational chatbot using Google Gemini API.\n\n🎵 Short Music Tunes - A music preview app using iTunes API.\n\n🍽️ Hostel Food Feedback System - A feedback management platform.\n\nWant to know more about a specific project?";
         }
 
         // Contact

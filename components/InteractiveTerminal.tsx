@@ -121,17 +121,22 @@ const InteractiveTerminal = () => {
                 <div className="text-[#FFCA28] font-bold">🚀 Featured Projects</div>
                 <div className="mt-2 space-y-3">
                     <div>
-                        <div className="text-[#FF6B35]">1. HackSprint</div>
+                        <div className="text-[#FF6B35]">1. Genkit ProStudio</div>
+                        <div className="text-white/80 text-sm">AI-powered SaaS platform for academic project lifecycle management</div>
+                        <div className="text-white/60 text-xs">Tech: Next.js, Firebase, TypeScript, Genkit, Tailwind CSS</div>
+                    </div>
+                    <div>
+                        <div className="text-[#FF6B35]">2. HackSprint</div>
                         <div className="text-white/80 text-sm">AI-powered SaaS platform for hackathon management</div>
                         <div className="text-white/60 text-xs">Tech: Next.js, TypeScript, Gemini API, Tailwind CSS</div>
                     </div>
                     <div>
-                        <div className="text-[#FF6B35]">2. AI Chatbot Assistant</div>
+                        <div className="text-[#FF6B35]">3. AI Chatbot Assistant</div>
                         <div className="text-white/80 text-sm">Smart educational chatbot with Google Gemini</div>
                         <div className="text-white/60 text-xs">Tech: JavaScript, HTML, CSS, Gemini API</div>
                     </div>
                     <div>
-                        <div className="text-[#FF6B35]">3. Short Music Tunes</div>
+                        <div className="text-[#FF6B35]">4. Short Music Tunes</div>
                         <div className="text-white/80 text-sm">Music preview app using iTunes API</div>
                         <div className="text-white/60 text-xs">Tech: JavaScript, HTML, CSS, iTunes API</div>
                     </div>
