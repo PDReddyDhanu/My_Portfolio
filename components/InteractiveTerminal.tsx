@@ -50,9 +50,25 @@ const InteractiveTerminal = () => {
                     <div><span className="text-[#FF6B35]">github</span> - Open GitHub profile</div>
                     <div><span className="text-[#FF6B35]">linkedin</span> - Open LinkedIn profile</div>
                     <div><span className="text-[#FF6B35]">resume</span> - Download resume</div>
+                    <div><span className="text-[#FF6B35]">creator</span> - View content creator stats</div>
                     <div><span className="text-[#FF6B35]">clear</span> - Clear terminal</div>
                     <div><span className="text-[#FF6B35]">whoami</span> - Display current user</div>
                     <div><span className="text-[#FF6B35]">date</span> - Show current date/time</div>
+                </div>
+            </div>
+        ),
+        creator: () => (
+            <div className="space-y-2">
+                <div className="text-[#FFCA28] font-bold">🎥 AI Content Creator Details</div>
+                <div className="mt-2 text-white/90">
+                    Host and maintain digital channels using automated workflows:
+                </div>
+                <div className="text-white/70 mt-1 pl-4 space-y-1">
+                    <div>📱 <span className="text-[#039BE5] font-semibold">Instagram:</span> 20K+ Followers</div>
+                    <div>🎥 <span className="text-[#FF6B35] font-semibold">YouTube:</span> 3K+ Subscribers</div>
+                </div>
+                <div className="text-white/60 text-xs mt-2 pl-4">
+                    Workflow: Uses LLMs for scriptwriting, Generative AI for voice synthesis, and Premiere/CapCut for video editing to post updated tech news.
                 </div>
             </div>
         ),

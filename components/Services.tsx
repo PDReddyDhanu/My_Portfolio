@@ -26,6 +26,11 @@ const servicesList: Service[] = [
     title: "Database Architecture",
     description: "Designing and managing secure, relational and non-relational database architectures using MongoDB, Firebase, and MySQL.",
     icon: "🍃"
+  },
+  {
+    title: "AI Content Creation",
+    description: "Creating AI-automated news and media content for Instagram (20K+ followers) and YouTube (3K+ subscribers). Specialized in AI voice synthesis, smart scripting, and video editing workflows.",
+    icon: "🎥"
   }
 ];
 
@@ -35,7 +40,7 @@ export const Services = () => {
       <span className="section-subtitle-unfold">Capabilities</span>
       <h2 className="section-title-unfold mb-12">What I Do</h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {servicesList.map((service, index) => (
           <motion.div
             key={service.title}
@@ -43,7 +48,9 @@ export const Services = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: index * 0.1 }}
-            className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl hover:border-white/10 transition-all duration-300 group"
+            className={`p-8 border border-white/5 bg-white/[0.01] rounded-2xl hover:border-white/10 transition-all duration-300 group ${
+              index === 4 ? 'md:col-span-2 lg:col-span-1' : ''
+            }`}
           >
             <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-300 inline-block">
               {service.icon}

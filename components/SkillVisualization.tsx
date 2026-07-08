@@ -40,9 +40,14 @@ export const SkillVisualization = () => {
     { name: 'GitHub', level: 92, category: 'Tools', icon: '🐙' },
     { name: 'Vercel', level: 88, category: 'Tools', icon: '▲' },
     { name: 'Netlify', level: 85, category: 'Tools', icon: '🌊' },
+
+    // Creative / Media
+    { name: 'AI Voice Synthesis', level: 90, category: 'Creative', icon: '🎙️' },
+    { name: 'Video Editing', level: 85, category: 'Creative', icon: '🎬' },
+    { name: 'AI Content Workflows', level: 88, category: 'Creative', icon: '🧠' },
   ];
 
-  const categories = ['All', 'Frontend', 'Backend', 'AI/ML', 'Database', 'Tools'];
+  const categories = ['All', 'Frontend', 'Backend', 'AI/ML', 'Database', 'Tools', 'Creative'];
 
   const filteredSkills = selectedCategory === 'All'
     ? skills

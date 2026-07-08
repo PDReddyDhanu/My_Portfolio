@@ -62,7 +62,12 @@ const AIChatbot = () => {
 
         // About
         if (q.includes('about') || q.includes('who') || q.includes('introduce')) {
-            return "Dhanunjay Reddy is a passionate Full Stack Developer and AI enthusiast! 🚀\n\nHe specializes in building modern web applications with React, TypeScript, and AI integration. With a strong foundation in both frontend and backend development, he creates innovative solutions that make a real impact.\n\nHe's particularly interested in AI/ML, SaaS platforms, and creating seamless user experiences!";
+            return "Dhanunjay Reddy is a passionate Full Stack Developer, AI enthusiast, and Content Creator! 🚀\n\nHe specializes in building modern web applications with React, TypeScript, and AI integrations. Alongside coding, he hosts a content creator channel (Instagram 20K+ followers, YouTube 3K+ subscribers) focused on automated tech news using generative AI workflows (AI scripting, voiceovers, video editing).\n\nHe's particularly interested in AI/ML, SaaS platforms, and creative digital workflows!";
+        }
+
+        // Creator / Social Reach
+        if (q.includes('creator') || q.includes('instagram') || q.includes('youtube') || q.includes('followers') || q.includes('channel') || q.includes('subscriber')) {
+            return "Dhanunjay is a digital content creator with a strong audience: 🎥\n\n📱 Instagram: 20K+ Followers\n🎥 YouTube: 3K+ Subscribers\n\nHe leverages AI voice generation, automated scriptwriting, and advanced video editing to publish updated news and tech info!";
         }
 
         // Default responses

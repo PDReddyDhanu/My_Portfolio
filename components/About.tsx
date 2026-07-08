@@ -7,7 +7,8 @@ export const About = () => {
     { label: "Institution", value: "Vidya Jyothi Institute of Technology" },
     { label: "CGPA", value: "8.82 / 10 (2022-2026)" },
     { label: "Location", value: "Hyderabad, India" },
-    { label: "Languages", value: "English, Telugu, Hindi" }
+    { label: "Languages", value: "English, Telugu, Hindi" },
+    { label: "Social Reach", value: "Instagram (20K+) / YouTube (3K+)" }
   ];
 
   return (
@@ -32,6 +33,9 @@ export const About = () => {
           </p>
           <p>
             Over the past few years, I've built real-world applications including hackathon management platforms, AI-powered chatbots, and feedback systems. I enjoy solving complex logic problems and turning ideas into responsive, user-friendly software products.
+          </p>
+          <p>
+            Beyond software engineering, I am a digital **content creator** hosting **20K+ followers on Instagram** and **3K+ subscribers on YouTube**. I design and produce automated news updates and technical explainers by leveraging generative AI voice synthesis, automated scripting, and advanced video editing workflows.
           </p>
         </motion.div>
 
