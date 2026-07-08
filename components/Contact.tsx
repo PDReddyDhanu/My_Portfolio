@@ -17,7 +17,8 @@ export const Contact = () => {
   const contactInfo = [
     { label: "Email Address", value: "palakolanudhanunjayreddy@gmail.com", href: "mailto:palakolanudhanunjayreddy@gmail.com" },
     { label: "LinkedIn Profile", value: "linkedin.com/in/palakolanu-dhanunjay-reddy", href: "https://linkedin.com/in/palakolanu-dhanunjay-reddy" },
-    { label: "GitHub Workspace", value: "github.com/PDReddyDhanu", href: "https://github.com/PDReddyDhanu" }
+    { label: "GitHub Workspace", value: "github.com/PDReddyDhanu", href: "https://github.com/PDReddyDhanu" },
+    { label: "Instagram Channel", value: "instagram.com/telugustates_official", href: "https://www.instagram.com/telugustates_official/" }
   ];
 
   return (
