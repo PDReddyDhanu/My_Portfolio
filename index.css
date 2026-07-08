@@ -324,3 +324,28 @@ section {
     padding: 0 4rem;
   }
 }
+
+/* Dashboard Layout Specific Styles */
+.pb-safe {
+  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
+}
+
+/* Custom dashboard scrollbar styling */
+main::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+main::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+main::-webkit-scrollbar-thumb {
+  background: #30363D;
+  border-radius: 3px;
+}
+
+main::-webkit-scrollbar-thumb:hover {
+  background: #8B949E;
+}
+

@@ -19,48 +19,71 @@ import AIChatbot from './components/AIChatbot';
 import GitHubActivity from './components/GitHubActivity';
 import InteractiveTerminal from './components/InteractiveTerminal';
 import SkillVisualization from './components/SkillVisualization';
-import { motion } from 'framer-motion';
+import { DashboardLayout, TabItem } from './components/DashboardLayout';
+import { AnimatePresence, motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
-const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#projects', label: 'Projects' },
-  { href: '#internships', label: 'Internships' },
-  { href: '#achievements', label: 'Achievements' },
-  { href: '#contact', label: 'Contact' },
+const tabs: TabItem[] = [
+  {
+    id: 'overview',
+    label: 'Overview',
+    icon: '📊',
+    svgIcon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
+      </svg>
+    )
+  },
+  {
+    id: 'skills',
+    label: 'Skills & Stats',
+    icon: '💻',
+    svgIcon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+      </svg>
+    )
+  },
+  {
+    id: 'projects',
+    label: 'Projects',
+    icon: '📂',
+    svgIcon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+      </svg>
+    )
+  },
+  {
+    id: 'experience',
+    label: 'Experience',
+    icon: '💼',
+    svgIcon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    )
+  },
+  {
+    id: 'contact',
+    label: 'Contact',
+    icon: '📬',
+    svgIcon: (
+      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+      </svg>
+    )
+  }
 ];
 
 function App() {
-  const [isScrolled, setIsScrolled] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [activeTab, setActiveTab] = useState('overview');
 
-  // Smooth scroll for anchor links
+  // Scroll to top when tab changes
   useEffect(() => {
-    const handleClick = (e: MouseEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName === 'A' && (target as HTMLAnchorElement).hash) {
-        const el = document.querySelector((target as HTMLAnchorElement).hash);
-        if (el) {
-          e.preventDefault();
-          el.scrollIntoView({ behavior: 'smooth' });
-        }
-      }
-    };
-
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-
-    document.addEventListener('click', handleClick);
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      document.removeEventListener('click', handleClick);
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, []);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [activeTab]);
 
   // Show loading screen first
   if (isLoading) {
@@ -74,94 +97,55 @@ function App() {
       <AnimatedBackground />
       <ScrollToTop />
       <AIChatbot />
-      {/* Header Navigation */}
-      <header className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled
-        ? 'bg-[#0D1117]/95 backdrop-blur-md shadow-lg border-b border-[#FF6B35]/20'
-        : 'bg-transparent'
-        }`}>
-        <nav className="container mx-auto flex items-center justify-between py-4 px-4">
-          {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 bg-gradient-to-br from-[#FF6B35] via-[#039BE5] to-[#FFCA28] rounded-lg p-0.5 shadow-lg">
-              <div className="w-full h-full bg-[#0D1117] rounded-lg flex items-center justify-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] via-[#039BE5] to-[#FFCA28] font-black text-sm">PDR</span>
-              </div>
-            </div>
-            <span className="text-white font-bold text-lg hidden sm:block">Dhanunjay Reddy</span>
-          </div>
-
-          {/* Navigation Links */}
-          <div className="hidden md:flex items-center space-x-1">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="text-white/80 hover:text-[#FF6B35] font-medium px-4 py-2 rounded-lg hover:bg-white/5 transition-all duration-200 text-sm"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-colors duration-200"
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            ) : (
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            )}
-          </button>
-        </nav>
-
-        {/* Mobile Navigation Menu */}
-        {isMobileMenuOpen && (
+      
+      <DashboardLayout
+        tabs={tabs}
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+      >
+        <AnimatePresence mode="wait">
           <motion.div
-            className="md:hidden bg-[#0D1117]/95 backdrop-blur-md border-t border-[#FF6B35]/20"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
+            key={activeTab}
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -15 }}
+            transition={{ duration: 0.25 }}
+            className="space-y-12 pb-12"
           >
-            <div className="container mx-auto px-4 py-4">
-              <div className="flex flex-col space-y-2">
-                {navLinks.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
-                    className="text-white/80 hover:text-[#FF6B35] font-medium px-4 py-3 rounded-lg hover:bg-white/5 transition-all duration-200 text-sm border border-transparent hover:border-[#FF6B35]/20"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {link.label}
-                  </a>
-                ))}
-              </div>
-            </div>
+            {activeTab === 'overview' && (
+              <>
+                <Hero />
+                <About />
+              </>
+            )}
+            {activeTab === 'skills' && (
+              <>
+                <SkillVisualization />
+                <Skills />
+                <GitHubActivity />
+              </>
+            )}
+            {activeTab === 'projects' && (
+              <>
+                <Projects />
+                <InteractiveTerminal />
+              </>
+            )}
+            {activeTab === 'experience' && (
+              <>
+                <Internships />
+                <Timeline />
+                <Certifications />
+                <Achievements />
+              </>
+            )}
+            {activeTab === 'contact' && (
+              <Contact />
+            )}
           </motion.div>
-        )}
-      </header>
-
-      <main className="relative z-10">
-        <Hero />
-        <About />
-        <SkillVisualization />
-        <Skills />
-        <Projects />
-        <GitHubActivity />
-        <InteractiveTerminal />
-        <Internships />
-        <Timeline />
-        <Certifications />
-        <Achievements />
-        <Contact />
-      </main>
-      <Footer />
+        </AnimatePresence>
+        <Footer />
+      </DashboardLayout>
     </>
   );
 }
