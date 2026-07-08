@@ -3,6 +3,12 @@ import { motion } from 'framer-motion';
 export const Hero = () => {
   return (
     <div className="relative h-screen w-full flex flex-col items-center justify-center text-center px-6 overflow-hidden">
+      {/* Background Image & Overlay */}
+      <div 
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-20"
+        style={{ backgroundImage: "url('/hero-bg.jpg')" }}
+      ></div>
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0e1013] via-transparent to-transparent pointer-events-none"></div>
       
       {/* Centered Profile Avatar */}
       <motion.div
