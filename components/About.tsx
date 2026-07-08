@@ -5,7 +5,7 @@ export const About = () => {
     { label: "Full Name", value: "Palakolanu Dhanunjay Reddy" },
     { label: "Education", value: "B.Tech in Information Technology" },
     { label: "Institution", value: "Vidya Jyothi Institute of Technology" },
-    { label: "Current CGPA", value: "8.8 / 10" },
+    { label: "CGPA", value: "8.82 / 10 (2022-2026)" },
     { label: "Location", value: "Hyderabad, India" },
     { label: "Languages", value: "English, Telugu, Hindi" }
   ];
@@ -25,7 +25,7 @@ export const About = () => {
           className="lg:col-span-7 space-y-6 text-white/70 text-sm sm:text-base leading-relaxed"
         >
           <p>
-            Hello! I'm <span className="text-[#FF6B35] font-semibold">Palakolanu Dhanunjay Reddy</span>, a developer and computer science student currently pursuing my B.Tech in Information Technology at Vidya Jyothi Institute of Technology, Hyderabad. 
+            Hello! I'm <span className="text-[#FF6B35] font-semibold">Palakolanu Dhanunjay Reddy</span>, a developer and IT graduate (2022-2026 Batch) from Vidya Jyothi Institute of Technology, Hyderabad. 
           </p>
           <p>
             My engineering journey is driven by a deep curiosity about how intelligent platforms are designed, built, and optimized. I focus heavily on **Full Stack Web Development** and **Artificial Intelligence integrations**, combining clean frontend interfaces with scalable server and database backends.

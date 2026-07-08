@@ -12,10 +12,10 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    year: '2022 - Present',
+    year: '2022 - 2026',
     title: 'B.Tech in Information Technology',
     organization: 'Vidya Jyothi Institute of Technology (VJIT), Hyderabad',
-    description: 'Pursuing undergraduate degree with a current CGPA of 8.8/10. Specialized coursework in Web Development, Software Engineering, AI & Machine Learning, and Databases.',
+    description: 'Completed B.Tech undergraduate degree (2022 - 2026 Batch) with a CGPA of 8.82/10. Specialized coursework in Web Development, Software Engineering, AI & Machine Learning, and Databases.',
     type: 'education',
     icon: '🎓',
   },

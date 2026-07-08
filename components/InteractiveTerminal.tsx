@@ -64,8 +64,8 @@ const InteractiveTerminal = () => {
                     Specializing in React, TypeScript, Next.js, and AI integration with Google Gemini.
                 </div>
                 <div className="text-white/70 mt-2">
-                    🎓 B.Tech in IT | CGPA: 8.8/10<br />
-                    💼 Full Stack Developer Intern @ Exposys Data Labs<br />
+                    🎓 B.Tech in IT | CGPA: 8.82/10<br />
+                    💼 Salesforce Developer Intern @ SmartBridge & AICTE<br />
                     🏆 Multiple certifications from Google, Microsoft, IIT Bombay
                 </div>
             </div>
@@ -107,14 +107,14 @@ const InteractiveTerminal = () => {
         ),
         experience: () => (
             <div className="space-y-2">
-                <div className="text-[#FFCA28] font-bold">💼 Work Experience</div>
+                <div className="text-[#FFCA28] font-bold">💼 Internship Experience</div>
                 <div className="mt-2">
-                    <div className="text-[#FF6B35]">Full Stack Developer Intern</div>
-                    <div className="text-white/80">Exposys Data Labs</div>
+                    <div className="text-[#FF6B35]">Salesforce Developer Virtual Intern</div>
+                    <div className="text-white/80">SmartBridge & AICTE (May 2025 - July 2025)</div>
                     <div className="text-white/60 text-sm mt-1">
-                        • Developed responsive web applications using React and Node.js<br />
-                        • Implemented RESTful APIs and database integration<br />
-                        • Collaborated with cross-functional teams on multiple projects
+                        • Gained hands-on experience with Salesforce CRM, Apex, and LWC<br />
+                        • Earned Salesforce Superbadges including Apex Specialist<br />
+                        • Achieved Agentblazer Champion status for outstanding performance
                     </div>
                 </div>
             </div>
@@ -125,7 +125,7 @@ const InteractiveTerminal = () => {
                 <div className="mt-2">
                     <div className="text-[#FF6B35]">B.Tech in Information Technology (IT)</div>
                     <div className="text-white/80">Vidya Jyothi Institute of Technology, Hyderabad</div>
-                    <div className="text-white/60 text-sm">CGPA: 8.8/10 (2022-2026)</div>
+                    <div className="text-white/60 text-sm">CGPA: 8.82/10 (2022-2026 Batch)</div>
                 </div>
                 <div className="mt-2">
                     <div className="text-[#FF6B35]">Intermediate (MPC)</div>

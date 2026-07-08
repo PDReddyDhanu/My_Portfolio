@@ -47,12 +47,12 @@ const AIChatbot = () => {
 
         // Experience
         if (q.includes('experience') || q.includes('internship') || q.includes('work')) {
-            return "Dhanunjay has experience as:\n\n💼 Full Stack Developer Intern at Exposys Data Labs\n🎓 Currently pursuing B.Tech in IT at Vidya Jyothi Institute of Technology, Hyderabad (CGPA: 8.8/10)\n🏆 Multiple certifications in AI, Python, and Web Development\n\nHe's passionate about building innovative solutions!";
+            return "Dhanunjay has experience as:\n\n💼 Salesforce Developer Intern @ SmartBridge & AICTE\n🎓 B.Tech IT Graduate from Vidya Jyothi Institute of Technology, Hyderabad (CGPA: 8.82/10)\n🏆 Multiple certifications in AI, Python, and Web Development\n\nHe's passionate about building innovative solutions!";
         }
 
         // Education
         if (q.includes('education') || q.includes('college') || q.includes('university')) {
-            return "🎓 Education:\n\nB.Tech in Information Technology (IT)\nVidya Jyothi Institute of Technology, Hyderabad\nCGPA: 8.8/10 (2022-2026)\n\nIntermediate (MPC)\nSri Kakatiya Junior College, Nizamabad\n87.7% (2020-2022)\n\nSSC\nZ.P. High School, Binola\nCGPA: 10/10 (2020)\n\nHe's also completed various certifications from Google, Microsoft, and IIT Bombay!";
+            return "🎓 Education:\n\nB.Tech in Information Technology (IT)\nVidya Jyothi Institute of Technology, Hyderabad\nCGPA: 8.82/10 (2022-2026 Batch)\n\nIntermediate (MPC)\nSri Kakatiya Junior College, Nizamabad\n87.7% (2020-2022)\n\nSSC\nZ.P. High School, Binola\nCGPA: 10/10 (2020)\n\nHe's also completed various certifications from Google, Microsoft, and IIT Bombay!";
         }
 
         // Achievements
