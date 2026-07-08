@@ -172,7 +172,12 @@ function App() {
         </section>
 
         {/* Section 3: About Me */}
-        <section id="about" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+        <section id="about" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03] relative overflow-hidden rounded-3xl">
+          {/* Background Image & Overlay */}
+          <div 
+            className="absolute inset-0 bg-cover bg-center bg-no-repeat pointer-events-none opacity-[0.08]"
+            style={{ backgroundImage: "url('/about-bg.jpg')" }}
+          ></div>
           <About />
         </section>
 
