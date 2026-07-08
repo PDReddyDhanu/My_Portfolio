@@ -15,16 +15,60 @@ export const Hero = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.8 }}
-        className="mb-8 relative"
+        className="mb-8 relative flex items-center justify-center w-36 h-36 mx-auto"
       >
-        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border border-white/10 shadow-2xl relative z-10 mx-auto">
+        {/* Inner Rotating Seal Circle */}
+        <motion.svg
+          viewBox="0 0 100 100"
+          className="absolute w-[112px] h-[112px] sm:w-[128px] sm:h-[128px] pointer-events-none z-0"
+          animate={{ rotate: 360 }}
+          transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        >
+          <defs>
+            <linearGradient id="sealGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stopColor="#FF6B35" stopOpacity="0.8" />
+              <stop offset="50%" stopColor="#039BE5" stopOpacity="0.8" />
+              <stop offset="100%" stopColor="#FFCA28" stopOpacity="0.8" />
+            </linearGradient>
+          </defs>
+          <circle
+            cx="50"
+            cy="50"
+            r="46"
+            fill="none"
+            stroke="url(#sealGrad)"
+            strokeWidth="1.5"
+            strokeDasharray="6 4"
+          />
+        </motion.svg>
+
+        {/* Outer Rotating Seal Circle (Counter-Clockwise) */}
+        <motion.svg
+          viewBox="0 0 100 100"
+          className="absolute w-[124px] h-[124px] sm:w-[140px] sm:h-[140px] pointer-events-none z-0"
+          animate={{ rotate: -360 }}
+          transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        >
+          <circle
+            cx="50"
+            cy="50"
+            r="48"
+            fill="none"
+            stroke="url(#sealGrad)"
+            strokeWidth="1"
+            strokeDasharray="12 6 3 6"
+            opacity="0.5"
+          />
+        </motion.svg>
+
+        <div className="w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border border-white/10 shadow-2xl relative z-10">
           <img
             src="/profile.jpg"
             alt="Palakolanu Dhanunjay Reddy"
             className="w-full h-full object-cover filter grayscale hover:grayscale-0 transition-all duration-500"
           />
         </div>
-        <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#039BE5] opacity-20 blur-md"></div>
+        <div className="absolute -inset-1 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#039BE5] opacity-20 blur-md z-0"></div>
       </motion.div>
 
       {/* Spacious Typography */}
