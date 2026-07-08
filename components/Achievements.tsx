@@ -32,7 +32,7 @@ const achievements: Achievement[] = [
 export const Achievements = () => {
   return (
     <div className="w-full relative z-10">
-      <span className="section-subtitle-unfold">Accomplishments</span>
+      <span className="section-subtitle-unfold">Recognition</span>
       <h2 className="section-title-unfold mb-12">Achievements</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

@@ -56,7 +56,7 @@ const certifications: Certification[] = [
 export const Certifications = () => {
   return (
     <div className="w-full relative z-10">
-      <span className="section-subtitle-unfold">Credentials</span>
+      <span className="section-subtitle-unfold">Qualifications</span>
       <h2 className="section-title-unfold mb-12">Certifications</h2>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">

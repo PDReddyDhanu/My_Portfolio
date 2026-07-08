@@ -25,7 +25,7 @@ function App() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ['home', 'portfolio', 'about', 'services', 'skills', 'journey', 'credentials', 'contact'];
+      const sections = ['home', 'portfolio', 'about', 'capabilities', 'skills', 'journey', 'certifications', 'contact'];
       const scrollPos = window.scrollY + 300;
 
       for (const section of sections) {
@@ -47,15 +47,15 @@ function App() {
 
   const navLinksLeft = [
     { id: 'home', label: 'Home' },
-    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'portfolio', label: 'Projects' },
     { id: 'about', label: 'About' },
-    { id: 'services', label: 'Services' }
+    { id: 'capabilities', label: 'Capabilities' }
   ];
 
   const navLinksRight = [
     { id: 'skills', label: 'Skills' },
     { id: 'journey', label: 'Journey' },
-    { id: 'credentials', label: 'Credentials' },
+    { id: 'certifications', label: 'Certifications' },
     { id: 'contact', label: 'Contact' }
   ];
 
@@ -171,23 +171,23 @@ function App() {
           <About />
         </section>
 
-        {/* Section 4: Services */}
-        <section id="services" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+        {/* Section 4: Capabilities */}
+        <section id="capabilities" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
           <Services />
         </section>
-
+ 
         {/* Section 5: Skills */}
         <section id="skills" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
           <SkillVisualization />
         </section>
-
+ 
         {/* Section 6: Journey */}
         <section id="journey" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
           <Timeline />
         </section>
-
-        {/* Section 7: Credentials */}
-        <section id="credentials" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03] space-y-24">
+ 
+        {/* Section 7: Certifications */}
+        <section id="certifications" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03] space-y-24">
           <Certifications />
           <Achievements />
         </section>

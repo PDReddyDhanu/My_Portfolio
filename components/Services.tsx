@@ -37,8 +37,8 @@ const servicesList: Service[] = [
 export const Services = () => {
   return (
     <div className="w-full relative z-10">
-      <span className="section-subtitle-unfold">Capabilities</span>
-      <h2 className="section-title-unfold mb-12">What I Do</h2>
+      <span className="section-subtitle-unfold">Focus Areas</span>
+      <h2 className="section-title-unfold mb-12">Capabilities</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {servicesList.map((service, index) => (
