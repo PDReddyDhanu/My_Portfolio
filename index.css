@@ -325,11 +325,6 @@ section {
   }
 }
 
-/* Dashboard Layout Specific Styles */
-.pb-safe {
-  padding-bottom: calc(0.5rem + env(safe-area-inset-bottom));
-}
-
 /* Custom dashboard scrollbar styling */
 main::-webkit-scrollbar {
   width: 6px;
@@ -347,5 +342,34 @@ main::-webkit-scrollbar-thumb {
 
 main::-webkit-scrollbar-thumb:hover {
   background: #8B949E;
+}
+
+/* Hide scrollbars for carousels */
+.scrollbar-hidden::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hidden {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Bento Grid System */
+.bento-grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 768px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1200px) {
+  .bento-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-auto-rows: minmax(160px, auto);
+  }
 }
 

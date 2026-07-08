@@ -2,11 +2,9 @@
 
 import Hero from './components/Hero';
 import About from './components/About';
-import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Achievements from './components/Achievements';
-import Internships from './components/Internships';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import AnimatedBackground from './components/AnimatedBackground';
@@ -16,76 +14,16 @@ import ScrollToTop from './components/ScrollToTop';
 import ParticleCursor from './components/ParticleCursor';
 import Timeline from './components/Timeline';
 import AIChatbot from './components/AIChatbot';
-import GitHubActivity from './components/GitHubActivity';
 import InteractiveTerminal from './components/InteractiveTerminal';
 import SkillVisualization from './components/SkillVisualization';
-import { DashboardLayout, TabItem } from './components/DashboardLayout';
-import { AnimatePresence, motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-
-const tabs: TabItem[] = [
-  {
-    id: 'overview',
-    label: 'Overview',
-    icon: '📊',
-    svgIcon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2v-4zM14 16a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2v-4z" />
-      </svg>
-    )
-  },
-  {
-    id: 'skills',
-    label: 'Skills & Stats',
-    icon: '💻',
-    svgIcon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    )
-  },
-  {
-    id: 'projects',
-    label: 'Projects',
-    icon: '📂',
-    svgIcon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-      </svg>
-    )
-  },
-  {
-    id: 'experience',
-    label: 'Experience',
-    icon: '💼',
-    svgIcon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    )
-  },
-  {
-    id: 'contact',
-    label: 'Contact',
-    icon: '📬',
-    svgIcon: (
-      <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    )
-  }
-];
+import StatsCounter from './components/StatsCounter';
+import { BentoCard } from './components/BentoCard';
+import { BentoClockCard } from './components/BentoClockCard';
+import { useState } from 'react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [activeTab, setActiveTab] = useState('overview');
 
-  // Scroll to top when tab changes
-  useEffect(() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [activeTab]);
-
-  // Show loading screen first
   if (isLoading) {
     return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
   }
@@ -98,54 +36,93 @@ function App() {
       <ScrollToTop />
       <AIChatbot />
       
-      <DashboardLayout
-        tabs={tabs}
-        activeTab={activeTab}
-        setActiveTab={setActiveTab}
-      >
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -15 }}
-            transition={{ duration: 0.25 }}
-            className="space-y-12 pb-12"
-          >
-            {activeTab === 'overview' && (
-              <>
-                <Hero />
-                <About />
-              </>
-            )}
-            {activeTab === 'skills' && (
-              <>
-                <SkillVisualization />
-                <Skills />
-                <GitHubActivity />
-              </>
-            )}
-            {activeTab === 'projects' && (
-              <>
-                <Projects />
-                <InteractiveTerminal />
-              </>
-            )}
-            {activeTab === 'experience' && (
-              <>
-                <Internships />
-                <Timeline />
-                <Certifications />
-                <Achievements />
-              </>
-            )}
-            {activeTab === 'contact' && (
-              <Contact />
-            )}
-          </motion.div>
-        </AnimatePresence>
-        <Footer />
-      </DashboardLayout>
+      {/* Header */}
+      <header className="sticky top-0 z-50 w-full bg-[#0D1117]/85 backdrop-blur-md border-b border-[#30363D] py-4 px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between">
+          <div className="flex items-center space-x-2">
+            <div className="w-9 h-9 bg-gradient-to-br from-[#FF6B35] via-[#039BE5] to-[#FFCA28] rounded-xl p-0.5 shadow-lg">
+              <div className="w-full h-full bg-[#0D1117] rounded-xl flex items-center justify-center">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] via-[#039BE5] to-[#FFCA28] font-black text-sm">PDR</span>
+              </div>
+            </div>
+            <div>
+              <span className="text-white font-bold text-base leading-none block">Dhanunjay Reddy</span>
+              <span className="text-[9px] text-[#039BE5] font-mono leading-none block mt-0.5">PORTFOLIO WORKSPACE</span>
+            </div>
+          </div>
+          
+          <div className="flex items-center space-x-2 sm:space-x-4">
+            <a
+              href="#contact"
+              className="px-4 py-2 bg-[#2D3748]/50 border border-[#30363D] rounded-xl text-xs font-semibold text-white/80 hover:text-white hover:border-[#FF6B35]/40 transition-all duration-300"
+            >
+              Collaborate
+            </a>
+          </div>
+        </div>
+      </header>
+
+      {/* Main Grid Workspace */}
+      <main className="relative z-10 w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
+        <div className="bento-grid">
+          {/* Card 1: Hero Banner */}
+          <BentoCard glowColor="orange" className="lg:col-span-2 lg:row-span-2" delay={0.05}>
+            <Hero />
+          </BentoCard>
+
+          {/* Card 2: About Me */}
+          <BentoCard glowColor="blue" className="lg:col-span-2" delay={0.1}>
+            <About />
+          </BentoCard>
+
+          {/* Card 3: Clock & Status */}
+          <BentoCard glowColor="yellow" delay={0.15}>
+            <BentoClockCard />
+          </BentoCard>
+
+          {/* Card 4: Quick Highlights */}
+          <BentoCard glowColor="green" delay={0.2}>
+            <StatsCounter />
+          </BentoCard>
+
+          {/* Card 5: Skills Grid */}
+          <BentoCard glowColor="blue" className="lg:col-span-2 lg:row-span-2" delay={0.25}>
+            <SkillVisualization />
+          </BentoCard>
+
+          {/* Card 6: Projects Carousel */}
+          <BentoCard glowColor="yellow" className="lg:col-span-2 lg:row-span-2" delay={0.3}>
+            <Projects />
+          </BentoCard>
+
+          {/* Card 7: Terminal Console */}
+          <BentoCard glowColor="orange" className="lg:col-span-2 lg:row-span-2" delay={0.35}>
+            <InteractiveTerminal />
+          </BentoCard>
+
+          {/* Card 8: Education / Timeline */}
+          <BentoCard glowColor="green" className="lg:col-span-2 lg:row-span-2" delay={0.4}>
+            <Timeline />
+          </BentoCard>
+
+          {/* Card 9: Certifications */}
+          <BentoCard glowColor="blue" className="lg:col-span-2" delay={0.45}>
+            <Certifications />
+          </BentoCard>
+
+          {/* Card 10: Achievements */}
+          <BentoCard glowColor="orange" delay={0.5}>
+            <Achievements />
+          </BentoCard>
+
+          {/* Card 11: Contact */}
+          <BentoCard glowColor="green" delay={0.55}>
+            <Contact />
+          </BentoCard>
+        </div>
+      </main>
+
+      <Footer />
     </>
   );
 }

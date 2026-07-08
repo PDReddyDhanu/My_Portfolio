@@ -49,39 +49,32 @@ const Counter = ({ target, suffix = '', inView }: { target: number; suffix?: str
 
 const StatsCounter = () => {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.3 });
+    const isInView = useInView(ref, { once: true, amount: 0.1 });
 
     return (
-        <section ref={ref} className="py-12">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+        <div ref={ref} className="w-full h-full flex flex-col justify-between">
+            <h3 className="text-xs font-bold uppercase tracking-wider text-white/50 mb-3">Highlights</h3>
+            <div className="grid grid-cols-2 gap-3 flex-1">
                 {stats.map((stat, index) => (
                     <motion.div
                         key={stat.label}
-                        className="firebase-card p-6 text-center"
-                        initial={{ opacity: 0, y: 30 }}
+                        className="bg-[#1A202C]/40 border border-[#30363D] rounded-2xl p-3 text-center flex flex-col items-center justify-center"
+                        initial={{ opacity: 0, y: 15 }}
                         animate={isInView ? { opacity: 1, y: 0 } : {}}
-                        transition={{ duration: 0.6, delay: index * 0.1 }}
-                        whileHover={{ y: -5, transition: { duration: 0.2 } }}
+                        transition={{ duration: 0.6, delay: index * 0.05 }}
                     >
-                        <motion.div
-                            className="text-4xl md:text-5xl mb-3"
-                            initial={{ scale: 0 }}
-                            animate={isInView ? { scale: 1 } : {}}
-                            transition={{ duration: 0.5, delay: index * 0.1 + 0.2, type: 'spring' }}
-                        >
-                            {stat.icon}
-                        </motion.div>
+                        <div className="text-xl mb-1">{stat.icon}</div>
                         <div
-                            className="text-3xl md:text-4xl font-bold mb-2"
+                            className="text-lg sm:text-xl font-bold leading-none mb-1 font-mono"
                             style={{ color: stat.color }}
                         >
                             <Counter target={stat.value} suffix={stat.suffix} inView={isInView} />
                         </div>
-                        <p className="text-white/70 text-sm md:text-base font-medium">{stat.label}</p>
+                        <p className="text-white/60 text-[10px] sm:text-xs leading-none font-medium text-center">{stat.label.split(' ')[0]} {stat.label.split(' ').slice(1).join(' ')}</p>
                     </motion.div>
                 ))}
             </div>
-        </section>
+        </div>
     );
 };
 

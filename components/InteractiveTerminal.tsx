@@ -238,41 +238,24 @@ const InteractiveTerminal = () => {
     };
 
     return (
-        <section id="terminal" className="py-20 px-4 relative">
-            {/* Background Elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute top-20 left-10 w-72 h-72 bg-[#FF6B35]/5 rounded-full blur-3xl"></div>
-            </div>
-
-            <div className="container mx-auto max-w-5xl relative z-10">
+        <div className="w-full h-full flex flex-col justify-between py-2">
+            <div>
                 {/* Section Title */}
-                <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                >
-                    <span className="text-4xl md:text-5xl mr-4">💻</span>
-                    Interactive Terminal
-                </motion.h2>
+                <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center">
+                    <span className="text-2xl sm:text-3xl mr-3">📟</span>
+                    Terminal Workspace
+                </h2>
 
                 {/* Terminal Window */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                    className="bg-[#1A202C] rounded-xl overflow-hidden shadow-2xl border border-[#4A5568]"
-                >
+                <div className="bg-[#1A202C] rounded-2xl overflow-hidden shadow-2xl border border-[#30363D]">
                     {/* Terminal Header */}
-                    <div className="bg-[#2D3748] px-4 py-3 flex items-center space-x-2">
-                        <div className="flex space-x-2">
-                            <div className="w-3 h-3 bg-red-500 rounded-full"></div>
-                            <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
-                            <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    <div className="bg-[#2D3748]/40 px-4 py-2.5 flex items-center space-x-2 border-b border-[#30363D]">
+                        <div className="flex space-x-1.5">
+                            <div className="w-2.5 h-2.5 bg-red-500 rounded-full"></div>
+                            <div className="w-2.5 h-2.5 bg-yellow-500 rounded-full"></div>
+                            <div className="w-2.5 h-2.5 bg-green-500 rounded-full"></div>
                         </div>
-                        <div className="flex-1 text-center text-white/60 text-sm font-mono">
+                        <div className="flex-1 text-center text-white/50 text-[10px] sm:text-xs font-mono">
                             guest@dhanunjay-portfolio: ~
                         </div>
                     </div>
@@ -280,7 +263,7 @@ const InteractiveTerminal = () => {
                     {/* Terminal Body */}
                     <div
                         ref={terminalRef}
-                        className="p-4 h-96 overflow-y-auto font-mono text-sm scrollbar-thin scrollbar-thumb-[#4A5568] scrollbar-track-transparent"
+                        className="p-4 h-64 overflow-y-auto font-mono text-xs sm:text-sm scrollbar-thin scrollbar-thumb-[#30363D] scrollbar-track-transparent"
                         onClick={() => inputRef.current?.focus()}
                     >
                         <AnimatePresence>
@@ -320,20 +303,14 @@ const InteractiveTerminal = () => {
                             />
                         </form>
                     </div>
-                </motion.div>
+                </div>
 
                 {/* Hint */}
-                <motion.p
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    transition={{ duration: 0.6, delay: 0.3 }}
-                    viewport={{ once: true }}
-                    className="text-center text-white/40 text-sm mt-4"
-                >
+                <p className="text-center text-white/40 text-[10px] sm:text-xs mt-2">
                     💡 Tip: Use ↑ ↓ arrow keys to navigate command history
-                </motion.p>
+                </p>
             </div>
-        </section>
+        </div>
     );
 };
 

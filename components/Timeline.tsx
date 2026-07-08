@@ -1,140 +1,108 @@
-import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
+import { motion, useInView } from 'framer-motion';
 
 interface TimelineItem {
-    year: string;
-    title: string;
-    organization: string;
-    description: string;
-    type: 'education' | 'experience';
-    icon: string;
+  year: string;
+  title: string;
+  organization: string;
+  description: string;
+  type: 'education' | 'experience';
+  icon: string;
 }
 
 const timelineData: TimelineItem[] = [
-    {
-        year: '2022 - 2026',
-        title: 'B.Tech in IT (Information Technology)',
-        organization: 'Vidya Jyothi Institute of Technology',
-        description: 'Pursuing Bachelor of Technology in Information Technology with a CGPA of 8.8/10. Specializing in Full Stack Development, AI/ML integration, and modern web technologies. Active participant in hackathons and technical projects.',
-        type: 'education',
-        icon: '🎓',
-    },
-    {
-        year: '2024',
-        title: 'Full Stack Developer Intern',
-        organization: 'Exposys Data Labs',
-        description: 'Developed multiple full-stack applications using React, TypeScript, Node.js, and modern frameworks. Implemented AI-powered features using Google Gemini API and deployed production-ready applications on Vercel and Netlify.',
-        type: 'experience',
-        icon: '💼',
-    },
-    {
-        year: '2023 - 2024',
-        title: 'Advanced Web Development & AI Integration',
-        organization: 'Self-Paced Learning & Certifications',
-        description: 'Completed comprehensive training in React, TypeScript, Next.js, and AI integration. Earned certifications from Google (AI Essentials), Microsoft, IIT Bombay (Python), and Salesforce. Built multiple portfolio projects including HackSprint and AI Chatbot.',
-        type: 'education',
-        icon: '📚',
-    },
-    {
-        year: '2020 - 2022',
-        title: 'Board of Intermediate Education (MPC)',
-        organization: 'Sri Kakatiya Junior College',
-        description: 'Completed Intermediate education with Mathematics, Physics, and Chemistry (MPC) stream, achieving 87.7%. Developed strong analytical and problem-solving skills. Located in Nizamabad, Telangana.',
-        type: 'education',
-        icon: '📖',
-    },
-    {
-        year: '2020',
-        title: 'Board of Secondary Education (SSC)',
-        organization: 'Z.P. High School',
-        description: 'Completed Secondary School Certificate with an outstanding CGPA of 10/10. Built a strong foundation in core subjects and developed a passion for technology and programming. Located in Binola, Telangana.',
-        type: 'education',
-        icon: '🏆',
-    },
+  {
+    year: '2022 - Present',
+    title: 'B.Tech in Information Technology',
+    organization: 'Vidya Jyothi Institute of Technology (VJIT), Hyderabad',
+    description: 'Pursuing undergraduate degree with a current CGPA of 8.8/10. Specialized coursework in Web Development, Software Engineering, AI & Machine Learning, and Databases.',
+    type: 'education',
+    icon: '🎓',
+  },
+  {
+    year: 'Jun 2024 - Jul 2024',
+    title: 'Salesforce Developer Virtual Intern',
+    organization: 'Salesforce / AICTE',
+    description: 'Hands-on training in Salesforce CRM, Apex programming, Lightning Web Components (LWC), and platform security, building custom developer workflows.',
+    type: 'experience',
+    icon: '☁️',
+  },
+  {
+    year: '2020 - 2022',
+    title: 'Board of Intermediate Education (MPC)',
+    organization: 'Sri Kakatiya Junior College, Nizamabad',
+    description: 'Completed Intermediate education with Mathematics, Physics, and Chemistry (MPC) stream, achieving 87.7%. Developed strong analytical skills.',
+    type: 'education',
+    icon: '📖',
+  },
+  {
+    year: '2020',
+    title: 'Board of Secondary Education (SSC)',
+    organization: 'Z.P. High School, Binola',
+    description: 'Completed Secondary School Certificate with an outstanding CGPA of 10/10.',
+    type: 'education',
+    icon: '🏆',
+  },
 ];
 
-const TimelineItem = ({ item, index, isLeft }: { item: TimelineItem; index: number; isLeft: boolean }) => {
-    const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, amount: 0.5 });
+const TimelineCard = ({ item, index }: { item: TimelineItem; index: number }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
 
-    return (
-        <div ref={ref} className="relative flex items-center mb-12 md:mb-16">
-            {/* Timeline dot */}
-            <motion.div
-                className="absolute left-1/2 transform -translate-x-1/2 w-6 h-6 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#039BE5] border-4 border-[#0D1117] z-10"
-                initial={{ scale: 0 }}
-                animate={isInView ? { scale: 1 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
-            >
-                <motion.div
-                    className="absolute inset-0 rounded-full bg-[#FF6B35]"
-                    animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-                    transition={{ duration: 2, repeat: Infinity }}
-                />
-            </motion.div>
+  return (
+    <div ref={ref} className="relative pl-8 pb-8 last:pb-0">
+      {/* Vertical line connector */}
+      <div className="absolute left-[11px] top-3 bottom-0 w-0.5 bg-[#30363D]"></div>
 
-            {/* Content */}
-            <motion.div
-                className={`w-full md:w-5/12 ${isLeft ? 'md:text-right md:pr-12' : 'md:ml-auto md:pl-12'}`}
-                initial={{ opacity: 0, x: isLeft ? -50 : 50 }}
-                animate={isInView ? { opacity: 1, x: 0 } : {}}
-                transition={{ duration: 0.6, delay: index * 0.2 }}
-            >
-                <div className="firebase-card p-6 hover:border-[#FF6B35]/40 transition-all duration-300">
-                    <div className="flex items-center gap-3 mb-3">
-                        <span className="text-3xl">{item.icon}</span>
-                        <span className="text-[#FFCA28] font-bold text-sm">{item.year}</span>
-                    </div>
-                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                    <p className="text-[#039BE5] font-semibold mb-3">{item.organization}</p>
-                    <p className="text-white/70 text-sm leading-relaxed">{item.description}</p>
-                </div>
-            </motion.div>
+      {/* Bullet dot */}
+      <motion.div
+        className="absolute left-[3px] top-1.5 w-[18px] h-[18px] rounded-full bg-[#161B22] border-2 border-[#FF6B35] z-10 flex items-center justify-center"
+        initial={{ scale: 0 }}
+        animate={isInView ? { scale: 1 } : {}}
+        transition={{ duration: 0.4, delay: index * 0.1 }}
+      >
+        <div className="w-1.5 h-1.5 bg-[#FF6B35] rounded-full"></div>
+      </motion.div>
+
+      {/* Content box */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={isInView ? { opacity: 1, x: 0 } : {}}
+        transition={{ duration: 0.4, delay: index * 0.1 }}
+        className="bg-[#1A202C]/30 border border-[#30363D] rounded-2xl p-4 hover:border-[#FF6B35]/30 transition-all duration-300"
+      >
+        <div className="flex items-center justify-between mb-1.5">
+          <span className="text-[10px] font-bold text-[#FFCA28] bg-[#FFCA28]/10 px-2 py-0.5 rounded-full font-mono">
+            {item.year}
+          </span>
+          <span className="text-sm shrink-0">{item.icon}</span>
         </div>
-    );
+        <h3 className="text-sm sm:text-base font-bold text-white leading-tight mb-0.5">{item.title}</h3>
+        <p className="text-[#039BE5] font-semibold text-xs mb-2 leading-none">{item.organization}</p>
+        <p className="text-white/60 text-xs leading-relaxed">{item.description}</p>
+      </motion.div>
+    </div>
+  );
 };
 
-const Timeline = () => {
-    const lineRef = useRef(null);
-    const isLineInView = useInView(lineRef, { once: true, amount: 0.1 });
+export const Timeline = () => {
+  return (
+    <div className="w-full h-full flex flex-col justify-between py-2">
+      <div>
+        <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center">
+          <span className="text-2xl sm:text-3xl mr-3">📅</span>
+          Education & Journey
+        </h2>
 
-    return (
-        <section id="timeline" className="py-20 px-4">
-            <div className="container mx-auto max-w-6xl">
-                <motion.h2
-                    className="text-3xl md:text-4xl font-bold text-white mb-8 flex items-center justify-center"
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6 }}
-                    viewport={{ once: true }}
-                >
-                    <span className="text-4xl md:text-5xl mr-4">📅</span>
-                    My Journey
-                </motion.h2>
-
-                <div className="relative mt-16">
-                    {/* Timeline line */}
-                    <motion.div
-                        ref={lineRef}
-                        className="absolute left-1/2 transform -translate-x-1/2 w-1 bg-gradient-to-b from-[#FF6B35] via-[#039BE5] to-[#FFCA28] h-full origin-top"
-                        initial={{ scaleY: 0 }}
-                        animate={isLineInView ? { scaleY: 1 } : {}}
-                        transition={{ duration: 1.5, ease: 'easeInOut' }}
-                    />
-
-                    {/* Timeline items */}
-                    {timelineData.map((item, index) => (
-                        <TimelineItem
-                            key={index}
-                            item={item}
-                            index={index}
-                            isLeft={index % 2 === 0}
-                        />
-                    ))}
-                </div>
-            </div>
-        </section>
-    );
+        {/* Scrollable container */}
+        <div className="max-h-[380px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-[#30363D] scrollbar-track-transparent">
+          {timelineData.map((item, index) => (
+            <TimelineCard key={index} item={item} index={index} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Timeline;
