@@ -3,6 +3,7 @@
 import Hero from './components/Hero';
 import About from './components/About';
 import Projects from './components/Projects';
+import Services from './components/Services';
 import Certifications from './components/Certifications';
 import Achievements from './components/Achievements';
 import Contact from './components/Contact';
@@ -14,15 +15,49 @@ import ScrollToTop from './components/ScrollToTop';
 import ParticleCursor from './components/ParticleCursor';
 import Timeline from './components/Timeline';
 import AIChatbot from './components/AIChatbot';
-import InteractiveTerminal from './components/InteractiveTerminal';
 import SkillVisualization from './components/SkillVisualization';
-import StatsCounter from './components/StatsCounter';
-import { BentoCard } from './components/BentoCard';
-import { BentoClockCard } from './components/BentoClockCard';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
+  const [activeSection, setActiveSection] = useState('home');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ['home', 'portfolio', 'about', 'services', 'skills', 'journey', 'credentials', 'contact'];
+      const scrollPos = window.scrollY + 300;
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollPos >= top && scrollPos < top + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinksLeft = [
+    { id: 'home', label: 'Home' },
+    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'about', label: 'About' },
+    { id: 'services', label: 'Services' }
+  ];
+
+  const navLinksRight = [
+    { id: 'skills', label: 'Skills' },
+    { id: 'journey', label: 'Journey' },
+    { id: 'credentials', label: 'Credentials' },
+    { id: 'contact', label: 'Contact' }
+  ];
 
   if (isLoading) {
     return <LoadingScreen onLoadingComplete={() => setIsLoading(false)} />;
@@ -35,91 +70,132 @@ function App() {
       <AnimatedBackground />
       <ScrollToTop />
       <AIChatbot />
+
+      {/* Unfold Background Grid Lines */}
+      <div className="lines-wrap">
+        <div className="lines-inner">
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+          <div className="line"></div>
+        </div>
+      </div>
       
-      {/* Header */}
-      <header className="sticky top-0 z-50 w-full bg-[#0D1117]/85 backdrop-blur-md border-b border-[#30363D] py-4 px-6">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <div className="flex items-center space-x-2">
-            <div className="w-9 h-9 bg-gradient-to-br from-[#FF6B35] via-[#039BE5] to-[#FFCA28] rounded-xl p-0.5 shadow-lg">
-              <div className="w-full h-full bg-[#0D1117] rounded-xl flex items-center justify-center">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#FF6B35] via-[#039BE5] to-[#FFCA28] font-black text-sm">PDR</span>
-              </div>
-            </div>
-            <div>
-              <span className="text-white font-bold text-base leading-none block">Dhanunjay Reddy</span>
-              <span className="text-[9px] text-[#039BE5] font-mono leading-none block mt-0.5">PORTFOLIO WORKSPACE</span>
-            </div>
-          </div>
+      {/* Sticky Unfold Header */}
+      <header className="fixed top-0 left-0 w-full z-50 bg-[#0e1013]/90 backdrop-blur-md border-b border-white/[0.03] py-5 px-6">
+        <div className="max-w-7xl mx-auto flex items-center justify-between relative">
           
-          <div className="flex items-center space-x-2 sm:space-x-4">
-            <a
-              href="#contact"
-              className="px-4 py-2 bg-[#2D3748]/50 border border-[#30363D] rounded-xl text-xs font-semibold text-white/80 hover:text-white hover:border-[#FF6B35]/40 transition-all duration-300"
-            >
-              Collaborate
+          {/* Mobile Menu Toggle Button */}
+          <button 
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            className="lg:hidden text-white/85 text-xs font-semibold uppercase tracking-wider focus:outline-none hover:text-[#FF6B35] transition-colors"
+          >
+            {mobileMenuOpen ? 'Close' : 'Menu'}
+          </button>
+
+          {/* Left Nav (Desktop Only) */}
+          <nav className="hidden lg:flex items-center space-x-8 w-5/12 justify-end pr-10">
+            {navLinksLeft.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${
+                  activeSection === link.id ? 'text-[#FF6B35]' : 'text-white/50 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Center Logo */}
+          <div className="text-center absolute left-1/2 transform -translate-x-1/2 z-10">
+            <a href="#home" className="text-xl font-bold font-serif-heading text-white tracking-widest hover:text-[#FF6B35] transition-colors">
+              Dhanunjay<span className="text-[#FF6B35]">.</span>
             </a>
           </div>
+
+          {/* Right Nav (Desktop Only) */}
+          <nav className="hidden lg:flex items-center space-x-8 w-5/12 justify-start pl-10">
+            {navLinksRight.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                className={`text-xs font-semibold uppercase tracking-wider transition-colors duration-300 ${
+                  activeSection === link.id ? 'text-[#FF6B35]' : 'text-white/50 hover:text-white'
+                }`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Invisible spacer to balance mobile navbar layout */}
+          <div className="lg:hidden w-10"></div>
         </div>
       </header>
 
-      {/* Main Grid Workspace */}
-      <main className="relative z-10 w-full max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8">
-        <div className="bento-grid">
-          {/* Card 1: Hero Banner */}
-          <BentoCard glowColor="orange" className="lg:col-span-2 lg:row-span-2" delay={0.05}>
-            <Hero />
-          </BentoCard>
-
-          {/* Card 2: About Me */}
-          <BentoCard glowColor="blue" className="lg:col-span-2" delay={0.1}>
-            <About />
-          </BentoCard>
-
-          {/* Card 3: Clock & Status */}
-          <BentoCard glowColor="yellow" delay={0.15}>
-            <BentoClockCard />
-          </BentoCard>
-
-          {/* Card 4: Quick Highlights */}
-          <BentoCard glowColor="green" delay={0.2}>
-            <StatsCounter />
-          </BentoCard>
-
-          {/* Card 5: Skills Grid */}
-          <BentoCard glowColor="blue" className="lg:col-span-2 lg:row-span-2" delay={0.25}>
-            <SkillVisualization />
-          </BentoCard>
-
-          {/* Card 6: Projects Carousel */}
-          <BentoCard glowColor="yellow" className="lg:col-span-2 lg:row-span-2" delay={0.3}>
-            <Projects />
-          </BentoCard>
-
-          {/* Card 7: Terminal Console */}
-          <BentoCard glowColor="orange" className="lg:col-span-2 lg:row-span-2" delay={0.35}>
-            <InteractiveTerminal />
-          </BentoCard>
-
-          {/* Card 8: Education / Timeline */}
-          <BentoCard glowColor="green" className="lg:col-span-2 lg:row-span-2" delay={0.4}>
-            <Timeline />
-          </BentoCard>
-
-          {/* Card 9: Certifications */}
-          <BentoCard glowColor="blue" className="lg:col-span-2" delay={0.45}>
-            <Certifications />
-          </BentoCard>
-
-          {/* Card 10: Achievements */}
-          <BentoCard glowColor="orange" delay={0.5}>
-            <Achievements />
-          </BentoCard>
-
-          {/* Card 11: Contact */}
-          <BentoCard glowColor="green" delay={0.55}>
-            <Contact />
-          </BentoCard>
+      {/* Mobile Menu Overlay */}
+      {mobileMenuOpen && (
+        <div className="fixed inset-0 z-40 bg-[#0e1013] flex flex-col items-center justify-center space-y-6">
+          {[...navLinksLeft, ...navLinksRight].map((link) => (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={() => setMobileMenuOpen(false)}
+              className={`text-lg font-bold uppercase tracking-widest transition-colors ${
+                activeSection === link.id ? 'text-[#FF6B35]' : 'text-white/60 hover:text-white'
+              }`}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
+      )}
+
+      {/* Main Single Page Scroll Content */}
+      <main className="relative z-10 w-full">
+        {/* Section 1: Hero Cover */}
+        <section id="home">
+          <Hero />
+        </section>
+
+        {/* Section 2: Portfolio Grid */}
+        <section id="portfolio" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+          <Projects />
+        </section>
+
+        {/* Section 3: About Me */}
+        <section id="about" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+          <About />
+        </section>
+
+        {/* Section 4: Services */}
+        <section id="services" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+          <Services />
+        </section>
+
+        {/* Section 5: Skills */}
+        <section id="skills" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+          <SkillVisualization />
+        </section>
+
+        {/* Section 6: Journey */}
+        <section id="journey" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03]">
+          <Timeline />
+        </section>
+
+        {/* Section 7: Credentials */}
+        <section id="credentials" className="py-28 px-6 max-w-6xl mx-auto border-b border-white/[0.03] space-y-24">
+          <Certifications />
+          <Achievements />
+        </section>
+
+        {/* Section 8: Contact */}
+        <section id="contact" className="py-28 px-6 max-w-6xl mx-auto">
+          <Contact />
+        </section>
       </main>
 
       <Footer />

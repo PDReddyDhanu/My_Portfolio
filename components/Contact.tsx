@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
 export const Contact = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
@@ -6,7 +7,6 @@ export const Contact = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Simulate submission
     setIsSubmitted(true);
     setTimeout(() => {
       setFormData({ name: '', email: '', message: '' });
@@ -14,101 +14,99 @@ export const Contact = () => {
     }, 3000);
   };
 
-  const socials = [
-    {
-      name: 'Email',
-      icon: '✉️',
-      href: 'mailto:palakolanudhanunjayreddy@gmail.com',
-      color: 'bg-[#FF6B35]/15 text-[#FF6B35] border-[#FF6B35]/25 hover:bg-[#FF6B35]/25'
-    },
-    {
-      name: 'LinkedIn',
-      icon: '💼',
-      href: 'https://linkedin.com/in/palakolanu-dhanunjay-reddy',
-      color: 'bg-[#039BE5]/15 text-[#039BE5] border-[#039BE5]/25 hover:bg-[#039BE5]/25'
-    },
-    {
-      name: 'GitHub',
-      icon: '🐙',
-      href: 'https://github.com/PDReddyDhanu',
-      color: 'bg-[#FFCA28]/15 text-[#FFCA28] border-[#FFCA28]/25 hover:bg-[#FFCA28]/25'
-    }
+  const contactInfo = [
+    { label: "Email Address", value: "palakolanudhanunjayreddy@gmail.com", href: "mailto:palakolanudhanunjayreddy@gmail.com" },
+    { label: "LinkedIn Profile", value: "linkedin.com/in/palakolanu-dhanunjay-reddy", href: "https://linkedin.com/in/palakolanu-dhanunjay-reddy" },
+    { label: "GitHub Workspace", value: "github.com/PDReddyDhanu", href: "https://github.com/PDReddyDhanu" }
   ];
 
   return (
-    <div className="w-full h-full flex flex-col justify-between py-2">
-      <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center">
-          <span className="text-2xl sm:text-3xl mr-3">📬</span>
-          Get In Touch
-        </h2>
+    <div className="w-full relative z-10">
+      <span className="section-subtitle-unfold">Get In Touch</span>
+      <h2 className="section-title-unfold mb-12">Contact Me</h2>
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
-          {/* Quick Contact Info */}
-          <div className="lg:col-span-5 space-y-4">
-            <p className="text-xs sm:text-sm text-white/70 leading-relaxed">
-              I'm open to discussing opportunities, collaborations, or tech topics. Feel free to reach out directly:
-            </p>
-            
-            <div className="space-y-2.5">
-              {socials.map((social) => (
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        {/* Left: Contact Info */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="lg:col-span-5 space-y-8"
+        >
+          <p className="text-white/60 text-sm sm:text-base leading-relaxed">
+            I am always open to discussing new projects, creative opportunities, or technology collaborations. Feel free to shoot me a message or connect through my socials.
+          </p>
+
+          <div className="space-y-6">
+            {contactInfo.map((info) => (
+              <div key={info.label}>
+                <span className="text-[10px] uppercase tracking-wider text-white/30 block mb-1 font-mono">{info.label}</span>
                 <a
-                  key={social.name}
-                  href={social.href}
+                  href={info.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`flex items-center space-x-3 p-3 rounded-2xl border text-xs font-semibold transition-all duration-300 ${social.color}`}
+                  className="text-white hover:text-[#FF6B35] transition-colors text-sm sm:text-base font-semibold break-all"
                 >
-                  <span className="text-lg">{social.icon}</span>
-                  <span>Connect via {social.name}</span>
+                  {info.value}
                 </a>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+        </motion.div>
 
-          {/* Form */}
-          <div className="lg:col-span-7">
-            <form onSubmit={handleSubmit} className="space-y-2">
-              <div>
-                <input
-                  type="text"
-                  required
-                  placeholder="Your Name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full px-3.5 py-2 text-xs bg-[#1A202C]/40 border border-[#30363D] rounded-xl text-white outline-none focus:border-[#FF6B35]/50 transition-colors"
-                />
-              </div>
-              <div>
-                <input
-                  type="email"
-                  required
-                  placeholder="Your Email"
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full px-3.5 py-2 text-xs bg-[#1A202C]/40 border border-[#30363D] rounded-xl text-white outline-none focus:border-[#FF6B35]/50 transition-colors"
-                />
-              </div>
-              <div>
-                <textarea
-                  required
-                  rows={3}
-                  placeholder="Your Message..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="w-full px-3.5 py-2 text-xs bg-[#1A202C]/40 border border-[#30363D] rounded-xl text-white outline-none focus:border-[#FF6B35]/50 transition-colors resize-none"
-                />
-              </div>
+        {/* Right: Line-styled Form */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="lg:col-span-7"
+        >
+          <form onSubmit={handleSubmit} className="space-y-6">
+            <div>
+              <input
+                type="text"
+                required
+                placeholder="Your Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="unfold-input-field"
+              />
+            </div>
+            
+            <div>
+              <input
+                type="email"
+                required
+                placeholder="Your Email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                className="unfold-input-field"
+              />
+            </div>
 
+            <div>
+              <textarea
+                required
+                rows={4}
+                placeholder="Your Message..."
+                value={formData.message}
+                onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                className="unfold-input-field resize-none"
+              />
+            </div>
+
+            <div className="pt-4">
               <button
                 type="submit"
-                className="w-full py-2 bg-gradient-to-r from-[#FF6B35] to-[#039BE5] text-white rounded-xl text-xs font-bold shadow-md hover:opacity-90 active:scale-98 transition-all"
+                className="px-8 py-3.5 border border-white/10 text-xs font-bold uppercase tracking-wider text-white hover:bg-white hover:text-black transition-all duration-300 rounded-full cursor-pointer"
               >
-                {isSubmitted ? 'Message Sent! ✨' : 'Send Message 🚀'}
+                {isSubmitted ? 'Message Sent! ✨' : 'Send Message'}
               </button>
-            </form>
-          </div>
-        </div>
+            </div>
+          </form>
+        </motion.div>
       </div>
     </div>
   );

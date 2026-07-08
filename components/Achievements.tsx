@@ -31,32 +31,27 @@ const achievements: Achievement[] = [
 
 export const Achievements = () => {
   return (
-    <div className="w-full h-full flex flex-col justify-between py-2">
-      <div>
-        <h2 className="text-xl sm:text-2xl font-bold text-white mb-4 flex items-center">
-          <span className="text-2xl sm:text-3xl mr-3">🏆</span>
-          Achievements
-        </h2>
+    <div className="w-full relative z-10">
+      <span className="section-subtitle-unfold">Accomplishments</span>
+      <h2 className="section-title-unfold mb-12">Achievements</h2>
 
-        {/* Vertical list */}
-        <div className="space-y-3 max-h-[220px] overflow-y-auto pr-1 scrollbar-thin scrollbar-thumb-[#30363D] scrollbar-track-transparent">
-          {achievements.map((item, index) => (
-            <motion.div
-              key={item.title}
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.3, delay: index * 0.05 }}
-              viewport={{ once: true }}
-              className="bg-[#1A202C]/40 border border-[#30363D] rounded-2xl p-3 flex space-x-3 items-start"
-            >
-              <span className="text-2xl shrink-0">{item.icon}</span>
-              <div>
-                <h3 className="text-xs font-bold text-white leading-tight mb-1">{item.title}</h3>
-                <p className="text-[10px] text-white/50 leading-relaxed">{item.description}</p>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {achievements.map((item, index) => (
+          <motion.div
+            key={item.title}
+            initial={{ opacity: 0, y: 15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: index * 0.05 }}
+            viewport={{ once: true }}
+            className="bg-white/[0.01] border border-white/5 rounded-2xl p-6 flex space-x-4 items-start hover:border-white/10 transition-colors"
+          >
+            <span className="text-3xl shrink-0">{item.icon}</span>
+            <div>
+              <h3 className="text-base font-bold text-white mb-2 font-serif-heading">{item.title}</h3>
+              <p className="text-white/60 text-xs sm:text-sm leading-relaxed">{item.description}</p>
+            </div>
+          </motion.div>
+        ))}
       </div>
     </div>
   );
